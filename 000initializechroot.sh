@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 TARGET_ARCH=$1
 
 if [ -z "$TARGET_ARCH" ]; then
