@@ -29,13 +29,5 @@ echo "Select x86_64-unknown-linux-gnu and customize"
 # ./ct-ng menuconfig
 # ./ct-ng build
 
-#echo "Touch musl missing library files!"
-echo "Launching apk update...."
-apk update
+echo "Copy recursively to chroot the toolchain"
 
-echo "Creating virtual package for musl, musl-dev, musl-utils ..."
-#apk add -t musl
-#apk add -t musl-dev
-#apk add -t musl-utils
-
-#echo "Touch musl missing library files!"
