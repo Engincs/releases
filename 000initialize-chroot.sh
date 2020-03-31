@@ -5,15 +5,15 @@ TARGET_ARCH=$1
 if [ -z "$TARGET_ARCH" ]; then
  printf 'Please enter target architecture\n\n'
  printf  'x86 Based\n'
- printf   '--> x86 - 32 bit x86 (ia32)\n'
- printf   '--> x86_64 - 64 bit x86 (amd64)\n\n'
+ printf   'x86 - 32 bit x86 (ia32)\n'
+ printf   'x86_64 - 64 bit x86 (amd64)\n\n'
  printf   'ARM Based\n'
- printf   '--> armhf - 32 bit ARM (hard-float ABI)\n'
- printf   '--> aarch64 - 64 bit ARM\n\n'
+ printf   'armhf - 32 bit ARM (hard-float ABI)\n'
+ printf   'aarch64 - 64 bit ARM\n\n'
  printf   'PowerPC Based\n'
- printf   '--> ppc64le - 64 bit PowerPC (little-endian)\n\n'
+ printf   'ppc64le - 64 bit PowerPC (little-endian)\n\n'
  printf   'IBM System Z Based\n'
- printf   '--> s390x\n'
+ printf   's390x\n'
  return 1
 fi
 
