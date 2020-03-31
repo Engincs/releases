@@ -6,7 +6,7 @@ TARGET_ARCH=$1
 
 if [ -z "$TARGET_ARCH" ]; then
  printf 'Please enter target architecture\n'
- printf 'On an x86/64 machine, selecting other archs like arm, mips etc will return\n\n'
+ printf 'On an x86/64 machine, selecting other archs like arm, mips etc will return error\n\n'
  printf 'x86 BASED\n'
  printf 'x86 - 32 bit x86 (ia32)\n'
  printf 'x86_64 - 64 bit x86 (amd64)\n\n'
