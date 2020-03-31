@@ -1,7 +1,6 @@
 #!/bin/sh
 
 # Getting read for Glibc port of Alpine - Test script only
-
 cd /root/
 
 echo "Getting apktools static version 64-bit"
@@ -41,6 +40,9 @@ echo "Chroot and generate busybox symbolic links"
 chroot /root/engincs-os-chroot/ /bin/busybox.static --install -s /bin
 #exit
 echo "Exited chroot"
+
+echo "moving apk required for abuild"
+mv /root/engincs-os-chroot/sbin/apk.static /root/engincs-os-chroot/sbin/apk
 
 echo "Chroot and run apk update"
 #chroot /root/engincs-os-chroot/ /bin/sh -l
