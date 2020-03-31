@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Note you cannot run this as root
+# Note you cannot run this as root, run it inside pre-chrooted environment
 set -e
 
 TARGET_ARCH="$1"
