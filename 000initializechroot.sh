@@ -77,7 +77,7 @@ echo "Exited chroot"
 echo "Unmounting directories"
 # To sleep for .5 seconds: 
 sleep 10s
-#mount - commented out for abuild run
+#mount - commented out for abuild to run properly
 #umount /root/engincs-os-chroot/dev
 #umount /root/engincs-os-chroot/proc
 #umount /root/engincs-os-chroot/sys
