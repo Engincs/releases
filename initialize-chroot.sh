@@ -1,0 +1,58 @@
+#!/bin/sh
+
+# Getting read for Glibc port of Alpine - Test script only
+
+cd /root/
+
+echo "Getting apktools static version 64-bit"
+export APKTOOLSVERSION=2.10.5-r0
+wget http://dl-cdn.alpinelinux.org/alpine/edge/main/x86_64/apk-tools-static-$APKTOOLSVERSION.apk
+
+echo "Untar apktools static version 64-bit"
+tar -xzf apk-tools-static-*.apk
+cp sbin/apk.static apk
+rm -rf apk-tools-static-*.apk
+rm -rf sbin/
+
+echo "Creating chroot with busybox, alpine-keys and apk-tools"
+./apk -X http://dl-cdn.alpinelinux.org/alpine/edge/main/ -U --allow-untrusted --root /root/engincs-os-chroot/ --initdb add busybox-static apk-tools-static alpine-keys
+
+echo "Binding and mounting dev, proc and sys"
+mount /dev/ /root/engincs-os-chroot/dev/ --bind
+mount -o remount,ro,bind /root/engincs-os-chroot/dev
+mount -t proc none /root/engincs-os-chroot/proc 
+
+mkdir /root/engincs-os-chroot/sys
+mount -o bind /sys /root/engincs-os-chroot/sys
+
+echo "Creating root directory"
+mkdir -p /root/engincs-os-chroot/root
+
+echo "creating resolv.conf"
+cp /etc/resolv.conf /root/engincs-os-chroot/etc/ 
+echo -e 'nameserver 8.8.8.8\nnameserver 2620:0:ccc::2' > /root/engincs-os-chroot/etc/resolv.conf
+
+echo "creating repositories folder"
+mkdir -p /root/engincs-os-chroot/etc/apk 
+printf 'http://dl-cdn.alpinelinux.org/alpine/edge/main/\nhttp://dl-cdn.alpinelinux.org/alpine/edge/community/\nhttp://dl-cdn.alpinelinux.org/alpine/edge/testing/' > /root/engincs-os-chroot/etc/apk/repositories
+
+echo "Chroot and generate busybox symbolic links"
+#chroot /root/engincs-os-chroot/ busybox.static sh
+chroot /root/engincs-os-chroot/ /bin/busybox.static --install -s /bin
+#exit
+echo "Exited chroot"
+
+echo "Chroot and run apk update"
+#chroot /root/engincs-os-chroot/ /bin/sh -l
+#apk update
+#exit
+echo "Exited chroot"
+
+echo "Unmounting directories"
+# To sleep for .5 seconds: 
+sleep 10s
+#mount
+umount /root/engincs-os-chroot/dev
+umount /root/engincs-os-chroot/proc
+umount /root/engincs-os-chroot/sys
+#mount
