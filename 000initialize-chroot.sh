@@ -29,7 +29,9 @@ mkdir -p /root/engincs-os-chroot/root
 
 echo "creating resolv.conf"
 cp /etc/resolv.conf /root/engincs-os-chroot/etc/ 
-echo -e 'nameserver 8.8.8.8\nnameserver 2620:0:ccc::2' > /root/engincs-os-chroot/etc/resolv.conf
+#echo -e 'nameserver 8.8.8.8\nnameserver 2620:0:ccc::2' > /root/engincs-os-chroot/etc/resolv.conf
+printf 'nameserver 8.8.8.8\nnameserver 2620:0:ccc::2' > /root/engincs-os-chroot/etc/resolv.conf
+
 
 echo "creating repositories folder"
 mkdir -p /root/engincs-os-chroot/etc/apk 
