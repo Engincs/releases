@@ -15,7 +15,7 @@ if [ -z "$TARGET_ARCH" ]; then
  printf  'POWERPC BASED\n'
  printf  'ppc64le - 64 bit PowerPC (little-endian)\n\n'
  printf  'MIPS BASED\n'
- print   'mips64\n\n'
+ printf  'mips64\n\n'
  printf  'IBM SYSTEM Z BASED\n'
  printf  's390x\n\n'
  return 1
