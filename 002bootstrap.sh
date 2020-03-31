@@ -2,6 +2,8 @@
 
 # Note you cannot run this as root, run it inside pre-chrooted environment
 set -e
+# optional cross build packages
+KERNEL_PKG="linux-firmware linux-lts"
 
 TARGET_ARCH="$1"
 
