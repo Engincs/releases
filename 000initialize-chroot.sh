@@ -1,5 +1,12 @@
 #!/bin/sh
 
+TARGET_ARCH=$1
+
+if [ -z "$TARGET_ARCH" ]; then
+ printf 'Please enter target architecture\n'
+ return 1
+fi
+
 # Getting read for Glibc port of Alpine - Test script only
 cd /root/
 
@@ -14,7 +21,8 @@ rm -rf apk-tools-static-*.apk
 rm -rf sbin/
 
 echo "Creating chroot with busybox, alpine-keys and apk-tools"
-./apk -X http://dl-cdn.alpinelinux.org/alpine/edge/main/ -U --allow-untrusted --root /root/engincs-os-chroot/ --initdb add busybox-static apk-tools-static alpine-keys
+#./apk -X http://dl-cdn.alpinelinux.org/alpine/edge/main/ -U --allow-untrusted --root /root/engincs-os-chroot/ --initdb add busybox-static apk-tools-static alpine-keys
+./apk -X http://dl-cdn.alpinelinux.org/alpine/edge/main/ -U --allow-untrusted --arch $TARGET_ARCH --root /root/engincs-os-chroot/ --initdb add busybox-static apk-tools-static alpine-keys
 
 echo "Binding and mounting dev, proc and sys"
 mount /dev/ /root/engincs-os-chroot/dev/ --bind
