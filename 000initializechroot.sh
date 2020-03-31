@@ -5,19 +5,20 @@ set -e
 TARGET_ARCH=$1
 
 if [ -z "$TARGET_ARCH" ]; then
- printf 'Please enter target architecture\n\n'
- printf  'x86 BASED\n'
- printf  'x86 - 32 bit x86 (ia32)\n'
- printf  'x86_64 - 64 bit x86 (amd64)\n\n'
- printf  'ARM BASED\n'
- printf  'armhf - 32 bit ARM (hard-float ABI)\n'
- printf  'aarch64 - 64 bit ARM\n\n'
- printf  'POWERPC BASED\n'
- printf  'ppc64le - 64 bit PowerPC (little-endian)\n\n'
- printf  'MIPS BASED\n'
- printf  'mips64\n\n'
- printf  'IBM SYSTEM Z BASED\n'
- printf  's390x\n\n'
+ printf 'Please enter target architecture\n'
+ printf 'On an x86/64 machine, selecting other archs like arm, mips etc will return\n\n'
+ printf 'x86 BASED\n'
+ printf 'x86 - 32 bit x86 (ia32)\n'
+ printf 'x86_64 - 64 bit x86 (amd64)\n\n'
+ printf 'ARM BASED\n'
+ printf 'armhf - 32 bit ARM (hard-float ABI)\n'
+ printf 'aarch64 - 64 bit ARM\n\n'
+ printf 'POWERPC BASED\n'
+ printf 'ppc64le - 64 bit PowerPC (little-endian)\n\n'
+ printf 'MIPS BASED\n'
+ printf 'mips64\n\n'
+ printf 'IBM SYSTEM Z BASED\n'
+ printf 's390x\n\n'
  return 1
 fi
 
