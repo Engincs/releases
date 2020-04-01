@@ -1,9 +1,9 @@
 echo "Setting up $PATH and links inside chroot"
 
-#Notice that /tools/bin comes last in the PATH. 
-#This means that a temporary tool will no longer be used once its final version is installed. 
-#This occurs when the shell does not “remember” the locations of executed binaries—for this reason, 
-#hashing is switched off by passing the +h option to bash. 
+# Notice that /root/engincs-os-chroot/root/x-tools/x86_64-unknown-linux/bin comes last in the PATH. 
+# This means that a temporary tool will no longer be used once its final version is installed. 
+# This occurs when the shell does not “remember” the locations of executed binaries—
+# for this reason, hashing is switched off by passing the +h option to bash. 
 
 # External to chroot
 chroot /root/engincs-os-chroot/ bash --login +h
@@ -46,9 +46,16 @@ export PATH
 echo "Launching apk update...."
 apk update
 
-echo "Creating virtual package for glibc, glibc-dev, glibc-utils ...if required"
-#apk add -t glibc
-#apk add -t glibc-dev
-#apk add -t glibc-utils
+echo "Creating required files...."
+# linux-vdso.so.1 (0x00007ffc2b33a000)
+# libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fd603d17000)
+# /lib64/ld-linux-x86-64.so.2 (0x00007fd603f8e000)
 
-#echo "Touch musl missing library files!"
+
+echo "Creating virtual package for glibc, glibc-dev, glibc-utils ...if required"
+# apk add -t glibc
+# apk add -t glibc-dev
+# apk add -t glibc-utils
+
+echo "Touch world db for include library files!"
+
