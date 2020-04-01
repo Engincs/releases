@@ -7,7 +7,8 @@ echo "Setting up $PATH and links inside chroot"
 
 # External to chroot
 chroot /root/engincs-os-chroot/ bash --login +h
-#export PATH=$PATH:/root/x-tools/x86_64-unknown-linux-gnu/bin
+# export PATH=$PATH:/root/x-tools/x86_64-unknown-linux-gnu/bin
+# export PATH=$PATH:/root/x-tools/x86_64-unknown-linux-gnu/x86_64-unknown-linux-gnu/sysroot/sbin
 
 for dir in 'ls ~/x-tools'; do
 PATH=$PATH:~/x-tools/$dir/bin:
@@ -17,6 +18,14 @@ export PATH
 # OPTION 1
 # Library path can be defined in 
 # vi /etc/ld.so.conf 
+# /lib
+# /lib64
+# /usr/lib
+# /usr/lib64
+# /root/x-tools/x86_64-unknown-linux-gnu/x86_64-unknown-linux-gnu/sysroot/lib
+# /root/x-tools/x86_64-unknown-linux-gnu/x86_64-unknown-linux-gnu/sysroot/usr/lib
+# /root/x-tools/x86_64-unknown-linux-gnu/lib
+
 
 # OPTION 2
 # To set it temporarily, use the LD_LIBRARY_PATH environment variable on the command line. 
