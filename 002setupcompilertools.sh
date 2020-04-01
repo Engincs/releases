@@ -62,6 +62,6 @@ apk add -t glibc
 # apk add -t glibc-dev
 # apk add -t glibc-utils
 
-echo "Touch (append) world db for include library files!"
+echo "Touch (append) world db for include library files! Remember to remove any blank spaces at the last"
 cp /lib/apk/db/installed /lib/apk/db/installed-backup
 printf 'p:so:libc.so.6=6\nF:lib/x86_64-linux-gnu\nR:libc.so.6' >> /lib/apk/db/installed
