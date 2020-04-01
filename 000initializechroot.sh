@@ -3,7 +3,7 @@
 set -e
 
 TARGET_ARCH=$1
-
+# HINT: Look at cat /etc/apk/arch 
 if [ -z "$TARGET_ARCH" ]; then
  printf 'Please enter target architecture\n'
  printf 'On an x86/64 machine, selecting other archs like arm, mips etc will return error\n\n'
