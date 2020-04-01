@@ -30,4 +30,4 @@ echo "Select x86_64-unknown-linux-gnu and customize"
 # ./ct-ng build
 
 echo "Copy recursively to chroot the toolchain"
-
+# run recursive copy command
