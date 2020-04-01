@@ -51,11 +51,17 @@ echo "Creating required files...."
 # libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fd603d17000)
 # /lib64/ld-linux-x86-64.so.2 (0x00007fd603f8e000)
 
+# copy from sysroot/lib of libtools
+mkdir /lib/x86_64-linux-gnu/
+cp libc.so.6 libc-2.31.so /lib/x86_64-linux-gnu/
+mkdir /lib64/
+cp ld-linux-x86-64.so.2 ld-2.31.so /lib64/
 
 echo "Creating virtual package for glibc, glibc-dev, glibc-utils ...if required"
-# apk add -t glibc
+apk add -t glibc
 # apk add -t glibc-dev
 # apk add -t glibc-utils
 
-echo "Touch world db for include library files!"
-
+echo "Touch (append) world db for include library files!"
+cp /lib/apk/db/installed /lib/apk/db/installed-backup
+printf 'p:so:libc.so.6=6\nF:lib/x86_64-linux-gnu\nR:libc.so.6' >> /lib/apk/db/installed
