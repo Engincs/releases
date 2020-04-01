@@ -40,11 +40,10 @@ echo "Creating chroot with busybox, alpine-keys and apk-tools"
 ./apk -X http://dl-cdn.alpinelinux.org/alpine/edge/main/ -U --allow-untrusted --arch $TARGET_ARCH --root /root/engincs-os-chroot/ --initdb add busybox-static apk-tools-static alpine-keys linux-headers
 
 echo "Binding and mounting dev, proc and sys"
+mkdir /root/engincs-os-chroot/sys
 mount /dev/ /root/engincs-os-chroot/dev/ --bind
 mount -o remount,ro,bind /root/engincs-os-chroot/dev
 mount -t proc none /root/engincs-os-chroot/proc 
-
-mkdir /root/engincs-os-chroot/sys
 mount -o bind /sys /root/engincs-os-chroot/sys
 
 echo "Creating root directory"
