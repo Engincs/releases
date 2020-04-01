@@ -15,12 +15,12 @@ done
 export PATH
 
 # OPTION 1
-#Library path can be defined in 
+# Library path can be defined in 
 # vi /etc/ld.so.conf 
 
 # OPTION 2
-#To set it temporarily, use the LD_LIBRARY_PATH environment variable on the command line. 
-#If you want to keep the changes permanent, then add this line in the shell initialization file /etc/profile (global) or ~/.profile (user specific).
+# To set it temporarily, use the LD_LIBRARY_PATH environment variable on the command line. 
+# If you want to keep the changes permanent, then add this line in the shell initialization file /etc/profile (global) or ~/.profile (user specific).
 # export LD_LIBRARY_PATH=/root/x-tools/x86_64-unknown-linux-gnu/x86_64-unknown-linux-gnu/sysroot/lib
 
 # OPTION 3
@@ -29,8 +29,10 @@ export PATH
 # Alternatively, run the following command to create symbolic links from the soname to the filename:
 # ldconfig -n /root/x-tools/x86_64-unknown-linux-gnu/x86_64-unknown-linux-gnu/sysroot/lib
 
-#shows files and directories it works with
-#ldconfig -v 
+# By default, ldconfig reads the content of /etc/ld.so.conf, creates the appropriate symbolic links in the dynamic link directories, 
+# and then writes a cache to /etc/ld.so.cache which is then easily used by other programs.
+# ldconfig shows files and directories it works with
+# ldconfig -v 
 
 echo "Launching apk update...."
 apk update
