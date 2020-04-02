@@ -27,7 +27,7 @@ cd /root/
 
 echo "Getting apktools static version 64-bit"
 export APKTOOLSVERSION=2.10.5-r0
-wget http://dl-cdn.alpinelinux.org/alpine/edge/main/x86_64/apk-tools-static-$APKTOOLSVERSION.apk
+wget http://dl-cdn.alpinelinux.org/alpine/edge/main/$TARGET_ARCH/apk-tools-static-$APKTOOLSVERSION.apk
 
 echo "Untar apktools static version 64-bit"
 tar -xzf apk-tools-static-*.apk
