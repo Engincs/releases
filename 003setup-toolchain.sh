@@ -51,7 +51,7 @@ echo "Creating required files...."
 # libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fd603d17000)
 # /lib64/ld-linux-x86-64.so.2 (0x00007fd603f8e000)
 
-# copy from sysroot/lib of libtools
+# copy from sysroot/lib of libtools to /lib, /lib/x86_64-linux-gnu/ and /lib64
 mkdir /lib/x86_64-linux-gnu/
 cp libc.so.6 libc-2.31.so /lib/x86_64-linux-gnu/
 mkdir /lib64/
