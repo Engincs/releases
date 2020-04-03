@@ -1,6 +1,7 @@
 #!/bin/sh
-
 set -e
+
+# Runme on U(x)buntu 19.10
 
 TARGET_ARCH=$1
 # HINT: Look at cat /etc/apk/arch 
