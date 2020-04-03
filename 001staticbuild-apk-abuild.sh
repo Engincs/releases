@@ -24,6 +24,7 @@ apk add openssl-libs-static
 # Clone aports and fetch the latest updates
 cd /root/
 git clone https://gitlab.alpinelinux.org/alpine/aports.git
+cd /root/aports
 git pull 
 
 # Static compile abuild
@@ -32,8 +33,8 @@ git pull
 # Do not attemp on glibc as libc uses libnss to support a number of different providers for address resolution services.
 # Unfortunately, we cannot statically link libnss, as exactly what providers it loads depends on the local system's configuration
 # Hence below command will fail in glibc systems even with enable --enable-static-nss
-cd /root/aports/main/abuild
+
+cd /root
+git clone https://git.alpinelinux.org/cgit/abuild/
+cd /root/abuild
 CFLAGS="-no-pie -static" make
-
-# Recursive verbose copy cp -avr source /targe/
-
