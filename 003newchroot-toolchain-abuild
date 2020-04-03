@@ -1,0 +1,10 @@
+# umount dev/proc/sys
+
+# build new chroot
+
+echo "Copy recursively the toolchain to the previous chroot directory"
+# Run recursive copy command 
+# Recursive verbose copy cp -avr source /target/
+
+echo "Copy the abuild files to new chroot"
+/root/engincs-os-chroot/root/abuild
