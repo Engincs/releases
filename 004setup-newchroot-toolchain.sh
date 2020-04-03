@@ -6,10 +6,11 @@ echo "Setting up $PATH and links inside chroot"
 # for this reason, hashing is switched off by passing the +h option to bash. 
 
 # External to chroot
-chroot /root/engincs-os-chroot/ bash --login +h
+chroot /root/new-engincs-os-chroot/ bash --login +h
 # export PATH=$PATH:/root/x-tools/x86_64-unknown-linux-gnu/bin
 # export PATH=$PATH:/root/x-tools/x86_64-unknown-linux-gnu/x86_64-unknown-linux-gnu/sysroot/sbin
 
+# Internal to chroot
 for dir in 'ls ~/x-tools'; do
 PATH=$PATH:~/x-tools/$dir/bin:
 done
