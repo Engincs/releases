@@ -28,7 +28,3 @@ echo "Select x86_64-unknown-linux-gnu and customize"
 # ./ct-ng x86_64-unknown-linux-gnu
 # ./ct-ng menuconfig
 # ./ct-ng build
-
-echo "Copy recursively the toolchain to the previous chroot directory"
-# Run recursive copy command 
-# Recursive verbose copy cp -avr source /target/
