@@ -35,3 +35,5 @@ git pull
 cd /root/aports/main/abuild
 CFLAGS="-no-pie -static" make
 
+# Recursive verbose copy cp -avr source /targe/
+
