@@ -2,7 +2,10 @@
 set -e
 # Runme on U(x)buntu 19.10
 
-# umount dev/proc/sys
+echo "umount dev/proc/sys"
+umount /root/engincs-os-chroot/dev
+umount /root/engincs-os-chroot/sys
+umount /root/engincs-os-chroot/proc
 
 # build new chroot
 TARGET_ARCH=$1
