@@ -2,11 +2,6 @@
 set -e
 # Runme on U(x)buntu 19.10
 
-echo "umount dev/proc/sys"
-umount /root/engincs-os-chroot/dev
-umount /root/engincs-os-chroot/sys
-umount /root/engincs-os-chroot/proc
-
 # build new chroot
 TARGET_ARCH=$1
 # HINT: Look at cat /etc/apk/arch 
@@ -27,6 +22,11 @@ if [ -z "$TARGET_ARCH" ]; then
  printf 's390x\n\n'
  return 1
 fi
+
+echo "umount dev/proc/sys"
+umount /root/engincs-os-chroot/dev
+umount /root/engincs-os-chroot/sys
+umount /root/engincs-os-chroot/proc
 
 # Getting read for Glibc port of Alpine - Test script only
 cd /root/
