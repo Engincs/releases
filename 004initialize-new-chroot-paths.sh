@@ -8,7 +8,7 @@ echo "Setting up $PATH and links inside chroot"
 # External to chroot
 chroot /root/new-engincs-os-chroot/ bash --login +h
 # export PATH=$PATH:/root/x-tools/x86_64-linux-gnu/bin
-# export PATH=$PATH:/root/x-tools/x86_64-linux-gnu/x86_64-unknown-linux-gnu/sysroot/sbin
+# export PATH=$PATH:/root/x-tools/x86_64-linux-gnu/x86_64-linux-gnu/sysroot/sbin
 
 # Internal to chroot
 for dir in 'ls ~/x-tools'; do
