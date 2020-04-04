@@ -74,4 +74,4 @@ echo "Copy recursively the toolchain to the previous chroot directory"
 # Recursive verbose copy cp -avr source /target/
 
 echo "Copy the abuild files to new chroot"
-/root/new-engincs-os-chroot/root/abuild
+#/root/new-engincs-os-chroot/root/abuild
