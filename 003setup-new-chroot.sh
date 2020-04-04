@@ -72,6 +72,18 @@ mv /root/new-engincs-os-chroot/sbin/apk.static /root/engincs-os-chroot/sbin/apk
 echo "Copy recursively the toolchain to the previous chroot directory"
 # Run recursive copy command 
 # Recursive verbose copy cp -avr source /target/
+cp -avr /root/x-tools/ /root/new-engincs-os-chroot/root/
 
 echo "Copy the abuild files to new chroot"
-#/root/new-engincs-os-chroot/root/abuild
+cd /root/new-engincs-os-chroot/root/abuild
+cp abuild abuild-fetch abuild-gzsplit abuild-keygen abuild-rmtemp abuild-sign abuild-sudo abuild-tar /root/new-engincs-os-chroot/usr/bin
+cp abump apkbuild-cpan apkbuild-gem-resolver /root/new-engincs-os-chroot/usr/bin
+cp apkbuild-pypi apkgrel newapkbuild bootchartd buildlab checkapk newapkbuild /root/new-engincs-os-chroot/usr/bin
+
+cp abuild.conf /root/new-engincs-os-chroot/etc/
+
+mkdir /root/new-engincs-os-chroot/usr/share/abuild
+cp sample.confd sample.initd functions.sh sample.APKBUILD sample.post-install sample.pre-install config.sub /root/new-engincs-os-chroot/usr/share/abuild
+cp /root/engincs-os-chroot/root/abuild/tests/testrepo/pkg1/APKBUILD /root/new-engincs-os-chroot/usr/share/abuild/APKBUILD-SAMPLE
+
+
