@@ -23,21 +23,21 @@ export PATH
 # /lib64
 # /usr/lib
 # /usr/lib64
-# /root/x-tools/x86_64-unknown-linux-gnu/x86_64-unknown-linux-gnu/sysroot/lib
-# /root/x-tools/x86_64-unknown-linux-gnu/x86_64-unknown-linux-gnu/sysroot/usr/lib
-# /root/x-tools/x86_64-unknown-linux-gnu/lib
+# /root/x-tools/x86_64-linux-gnu/x86_64-linux-gnu/sysroot/lib
+# /root/x-tools/x86_64-linux-gnu/x86_64-inux-gnu/sysroot/usr/lib
+# /root/x-tools/x86_64-linux-gnu/lib
 
 
 # OPTION 2
 # To set it temporarily, use the LD_LIBRARY_PATH environment variable on the command line. 
 # If you want to keep the changes permanent, then add this line in the shell initialization file /etc/profile (global) or ~/.profile (user specific).
-# export LD_LIBRARY_PATH=/root/x-tools/x86_64-unknown-linux-gnu/x86_64-unknown-linux-gnu/sysroot/lib
+# export LD_LIBRARY_PATH=/root/x-tools/x86_64-linux-gnu/x86_64-linux-gnu/sysroot/lib
 
 # OPTION 3
 # After creating your shared library, you need to install it. 
 # You can either move it into any of the standard directories mentioned above, and run the ldconfig command.
 # Alternatively, run the following command to create symbolic links from the soname to the filename:
-# ldconfig -n /root/x-tools/x86_64-unknown-linux-gnu/x86_64-unknown-linux-gnu/sysroot/lib
+# ldconfig -n /root/x-tools/x86_64-linux-gnu/x86_64-linux-gnu/sysroot/lib
 
 # By default, ldconfig reads the content of /etc/ld.so.conf, creates the appropriate symbolic links in the dynamic link directories, 
 # and then writes a cache to /etc/ld.so.cache which is then easily used by other programs.
