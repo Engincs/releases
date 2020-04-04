@@ -70,7 +70,7 @@ chroot /root/new-engincs-os-chroot/ /bin/busybox.static --install -s /bin
 echo "Exited chroot"
 
 echo "moving apk required for abuild"
-mv /root/new-engincs-os-chroot/sbin/apk.static /root/engincs-os-chroot/sbin/apk
+mv /root/new-engincs-os-chroot/sbin/apk.static /root/new-engincs-os-chroot/sbin/apk
 
 echo "Copy recursively the toolchain to the previous chroot directory"
 # Run recursive copy command 
