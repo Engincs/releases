@@ -78,6 +78,7 @@ echo "Copy recursively the toolchain to the previous chroot directory"
 cp -avr /root/x-tools/ /root/new-engincs-os-chroot/root/
 
 echo "Copy the abuild files to new chroot"
+mkdir /root/new-engincs-os-chroot/usr/bin
 cd /root/engincs-os-chroot/root/abuild
 cp abuild abuild-fetch abuild-gzsplit abuild-keygen abuild-rmtemp abuild-sign abuild-sudo abuild-tar /root/new-engincs-os-chroot/usr/bin
 cp abump apkbuild-cpan apkbuild-gem-resolver /root/new-engincs-os-chroot/usr/bin
