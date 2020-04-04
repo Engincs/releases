@@ -82,7 +82,7 @@ mkdir /root/new-engincs-os-chroot/usr/bin
 cd /root/engincs-os-chroot/root/abuild
 cp abuild abuild-fetch abuild-gzsplit abuild-keygen abuild-rmtemp abuild-sign abuild-sudo abuild-tar /root/new-engincs-os-chroot/usr/bin
 cp abump apkbuild-cpan apkbuild-gem-resolver /root/new-engincs-os-chroot/usr/bin
-cp apkbuild-pypi apkgrel newapkbuild bootchartd buildlab checkapk newapkbuild /root/new-engincs-os-chroot/usr/bin
+cp apkbuild-pypi apkgrel newapkbuild bootchartd buildlab checkapk /root/new-engincs-os-chroot/usr/bin
 
 cp abuild.conf /root/new-engincs-os-chroot/etc/
 
