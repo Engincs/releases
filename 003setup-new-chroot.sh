@@ -84,6 +84,5 @@ cp abuild.conf /root/new-engincs-os-chroot/etc/
 
 mkdir /root/new-engincs-os-chroot/usr/share/abuild
 cp sample.confd sample.initd functions.sh sample.APKBUILD sample.post-install sample.pre-install config.sub /root/new-engincs-os-chroot/usr/share/abuild
+
 cp /root/engincs-os-chroot/root/abuild/tests/testrepo/pkg1/APKBUILD /root/new-engincs-os-chroot/usr/share/abuild/APKBUILD-SAMPLE
-
-
