@@ -38,3 +38,8 @@ cd /root
 git clone https://git.alpinelinux.org/cgit/abuild/
 cd /root/abuild
 CFLAGS="-no-pie -static" make
+gcc -no-pie -static -O3 -o abuild-fetch abuild-fetch.c -I/usr/include /usr/lib/libc.a 
+gcc -no-pie -static -O3 -o abuild-gzsplit abuild-gzsplit.c -I/usr/include /lib/libz.a /usr/lib/libc.a 
+gcc -no-pie -static -O3 -o abuild-sudo abuild-sudo.c -I/usr/include /usr/lib/libc.a 
+gcc -no-pie -static -O3 -o abuild-tar abuild-tar.c -I/usr/include /usr/lib/libcrypto.a /usr/lib/libc.a 
+gcc -no-pie -static -O3 -o abuild-rmtemp abuild-rmtemp.c -I/usr/include /usr/lib/libc.a
