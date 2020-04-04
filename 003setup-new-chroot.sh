@@ -39,7 +39,7 @@ rm -rf apk-tools-static-*.apk
 rm -rf sbin/
 
 echo "Creating chroot with busybox, alpine-keys and apk-tools"
-./apk -X http://dl-cdn.alpinelinux.org/alpine/edge/main/ -U --allow-untrusted --arch $TARGET_ARCH --root /root/engincs-os-chroot/ --initdb add busybox-static apk-tools-static alpine-keys linux-headers
+./apk -X http://dl-cdn.alpinelinux.org/alpine/edge/main/ -U --allow-untrusted --arch $TARGET_ARCH --root /root/new-engincs-os-chroot/ --initdb add busybox-static apk-tools-static alpine-keys linux-headers
 
 echo "Binding and mounting dev, proc and sys"
 mkdir /root/new-engincs-os-chroot/sys
