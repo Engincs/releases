@@ -44,3 +44,11 @@ gcc -no-pie -static -O3 -o abuild-sudo abuild-sudo.c -I/usr/include /usr/lib/lib
 gcc -no-pie -static -O3 -o abuild-tar abuild-tar.c -I/usr/include /usr/lib/libcrypto.a /usr/lib/libc.a 
 gcc -no-pie -static -O3 -o abuild-rmtemp abuild-rmtemp.c -I/usr/include /usr/lib/libc.a
 
+# Order is not really important but the dependencies needed to be able to build are more important
+# To build userspace programs, first need to be build compilers, libraries etc
+# Run the following in in aports/main
+# bzip2 is first, it has no dependencies at all, same with zlib, perl only depends on those 2 packages
+
+apk add lua-aports
+cd /root/aports/main
+ap builddirs * > /root/build-order.log
