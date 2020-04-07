@@ -26,7 +26,7 @@ STORAGE=/root/storage
 STORAGE_APORTS=aports
 
 CHROOT=/root/abuild-tools
-if [ ! -e $CHROOT ]]; then
+if [ ! -e $CHROOT ]; then
     mkdir $CHROOT
 else
     echo "$CHROOT already exists but is not a directory, discontinuing" 1>&2
@@ -98,10 +98,10 @@ mount -o bind $STORAGE $CHROOT/root/storage
 
 cd /root/storage
 echo "Clone aports and fetch the latest updates"
-if [ ! -d $STORAGE_APORTS]; then
+if [ ! -d $STORAGE_APORTS ]; then
     echo "does not exist"
 else
-    echo "$STORAGE aports already cloned discontinuing" 1>&2
+    echo "STORAGE_APORTS aports already cloned discontinuing" 1>&2
     return 1
 fi
 cd /root/storage
