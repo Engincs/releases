@@ -48,6 +48,16 @@ apk add lua-aports
 cd /root/storage/aports/main
 ap builddirs * > /root/storage/build-order.log
 
+echo "Compiling wget version"
+#apt install gnutls-bin libgnutls-openssl27 libcurl4-gnutls-dev libpsl-dev libgnutls28-dev
+apk add gnutls gnutls-dev gnutls-utils
+cd /root/storage
+wget https://ftp.gnu.org/gnu/wget/wget-1.20.3.tar.gz
+tar xvzf wget-1.20.3.tar.gz #may encounter extraction error, hence try this in host environment
+cd wget-1.20.3
+env CPPFLAGS="-I/usr/include" LDFLAGS="-L/usr/lib/ssl" ./configure --with-ssl=openssl
+make CPPFLAGS="-I/usr/include" LDFLAGS="-L/usr/lib -L/usr/lib/ssl -no-pie -static"
+
 cd /root/storage
 wget https://www.openssl.org/source/openssl-1.1.1f.tar.gz
 tar zxvf openssl-1.1.1f.tar.gz
