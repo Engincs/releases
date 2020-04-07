@@ -15,15 +15,6 @@ cd /root/storage/attr-2.4.48
 ./configure --prefix=/usr --enable-static --disable-shared
 make LDFLAGS=-static
 
-echo "Compiling wget version"
-apk add gnutls gnutls-dev gnutls-utils
-cd /root/storage
-wget https://ftp.gnu.org/gnu/wget/wget-1.20.3.tar.gz
-tar xvzf wget-1.20.3.tar.gz #may encounter extraction error, hence try this in host environment
-cd wget-1.20.3
-./configure LDFLAGS="-static" --with-ssl
-make
-
 echo "Compiling static version of tar to common storage"
 apt -y install libacl1-dev libattr1-dev
 cd /root/storage
