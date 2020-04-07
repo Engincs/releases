@@ -53,10 +53,12 @@ wget https://www.openssl.org/source/openssl-1.1.1f.tar.gz
 tar zxvf openssl-1.1.1f.tar.gz
 cd /root/storage/openssl-1.1.1f
 # Configure
-CC='/usr/bin/gcc -static -static-libgcc' ./Configure no-shared no-async linux-x86_64
+# CC='/usr/bin/gcc -static -static-libgcc' ./Configure no-shared no-async linux-x86_64
 # CC='/usr/bin/gcc -static' ./Configure no-shared no-async linux-x86_64
+CC='/usr/bin/gcc -static -static-libgcc' ./Configure no-shared no-async linux-x86_64
+CFLAGS="-static -static-libgcc" LDFLAGS=-static make 
 # Build 
-make -j4
+make -j12
 
 # BUILD AND COPY TO COMMON STORAGE
 # 0. Abuild
