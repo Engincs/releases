@@ -74,7 +74,7 @@ echo "Creating root directory"
 mkdir -p $CHROOT/root
 
 echo "creating resolv.conf"
-cp /etc/resolv.conf /root/engincs-os-chroot/etc/ 
+cp /etc/resolv.conf $CHROOT/etc/ 
 #echo -e 'nameserver 8.8.8.8\nnameserver 2620:0:ccc::2' > /root/engincs-os-chroot/etc/resolv.conf
 printf 'nameserver 8.8.8.8\nnameserver 2620:0:ccc::2' > $CHROOT/etc/resolv.conf
 
