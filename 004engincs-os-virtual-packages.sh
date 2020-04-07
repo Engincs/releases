@@ -6,15 +6,16 @@ echo "Setting up $PATH and links inside chroot"
 # for this reason, hashing is switched off by passing the +h option to bash. 
 
 # External to chroot
-chroot /root/new-engincs-os-chroot/ bash --login +h
+# chroot /root/engincs-os/ bash --login +h
+
 # export PATH=$PATH:/root/x-tools/x86_64-linux-gnu/bin
 # export PATH=$PATH:/root/x-tools/x86_64-linux-gnu/x86_64-linux-gnu/sysroot/sbin
 
 # Internal to chroot
-for dir in 'ls ~/x-tools'; do
-PATH=$PATH:~/x-tools/$dir/bin:
-done
-export PATH
+# for dir in 'ls ~/x-tools'; do
+# PATH=$PATH:~/x-tools/$dir/bin:
+# done
+# export PATH
 
 # OPTION 1
 # Library path can be defined in 
@@ -53,16 +54,17 @@ echo "Creating required files...."
 # /lib64/ld-linux-x86-64.so.2 (0x00007fd603f8e000)
 
 # copy from sysroot/lib of libtools to /lib, /lib/x86_64-linux-gnu/ and /lib64
-mkdir /lib/x86_64-linux-gnu/
-cp libc.so.6 libc-2.31.so /lib/x86_64-linux-gnu/
-mkdir /lib64/
-cp ld-linux-x86-64.so.2 ld-2.31.so /lib64/
+# mkdir /lib/x86_64-linux-gnu/
+# cp libc.so.6 libc-2.31.so /lib/x86_64-linux-gnu/
+# mkdir /lib64/
+# cp ld-linux-x86-64.so.2 ld-2.31.so /lib64/
 
 echo "Creating virtual package for glibc, glibc-dev, glibc-utils ...if required"
 apk add -t glibc
 # apk add -t glibc-dev
 # apk add -t glibc-utils
 
-echo "Touch (append) world db for include library files! Remember to remove any blank spaces at the last"
+echo "Touch (append) world db for include library files! Remember to remove any blank spaces before appending at the last"
 cp /lib/apk/db/installed /lib/apk/db/installed-backup
-printf 'p:so:libc.so.6=6\nF:lib/x86_64-linux-gnu\nR:libc.so.6' >> /lib/apk/db/installed
+# printf 'p:so:libc.so.6=6\nF:lib/x86_64-linux-gnu\nR:libc.so.6' >> /lib/apk/db/installed
+printf 'p:so:libc.so.6=6 so:libcrypt.so.1=1 so:libdl.so.2=2 so:libm.so.6=6 so:libpthread.so.0=0 so:libutil.so.1=1 so:librt.so.1=1\nF:lib/x86_64-linux-gnu\nR:libc.so.6\nR:libcrypt.so.1\nR:libdl.so.2\nR:libm.so.6\nR:libpthread.so.0\nR:libutil.so.1\nR:librt.so.1' >> /lib/apk/db/installed
