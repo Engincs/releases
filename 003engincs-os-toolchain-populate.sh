@@ -24,7 +24,7 @@ cp tests/testrepo/pkg1/APKBUILD /root/engincs-os/usr/share/abuild/APKBUILD-SAMPL
 echo "copying rest of tools"
 
 
-# Crosstool-not not feasible due inaccurate ldd pointers
+# Crosstool-ng is not feasible due inaccurate ldd pointers
 # GCC and GNU ld are configured against a common sysroot --sysroot=path. 
 # This means that where ld scripts refer to their subordinate libraries using an absolute path, the path is still relative to sysroot.
 # LD_LIBRARY_PATH, LIBRARY_PATH, LD_PRELOAD, /etc/ld.conf.so will not have any effect. Not even pkgconfig
@@ -50,7 +50,7 @@ echo "copying rest of tools"
 # attempt to open /root/x-tools/x86_64-linux-gnu/bin/../x86_64-linux-gnu/sysroot/lib/libcursesw.a failed
 # attempt to open /root/x-tools/x86_64-linux-gnu/bin/../x86_64-linux-gnu/sysroot/usr/lib/libcursesw.so failed
 # attempt to open /root/x-tools/x86_64-linux-gnu/bin/../x86_64-linux-gnu/sysroot/usr/lib/libcursesw.a failed
-# Cannot find -lz error, includ ZLIB_LIB=/lib, ZLIB_INCLUDE=/usr/include for perl in APKBUILD however not all packages provide such facility
+# Cannot find -lz error, include ZLIB_LIB=/lib, ZLIB_INCLUDE=/usr/include for perl in APKBUILD however not all packages provide such facility
 
 # cd /root
 # git clone https://github.com/crosstool-ng/crosstool-ng
