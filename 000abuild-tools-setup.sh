@@ -123,20 +123,6 @@ fi
 # aarch64
 # wget https://toolchains.bootlin.com/downloads/releases/toolchains/aarch64/tarballs/aarch64--glibc--bleeding-edge-2020.02-2.tar.bz2
 
-echo "Copy tools to common storage"
-#1. patch - copy - patch
-#2. pax-utils - copy - scanelf
-#4. tar - (libattr, libacl, tar) - static compile in host
-#6. attr (on host)
-
-echo "Build busybox"
-
-# echo "Chroot and run apk update"
-# chroot $CHROOT/ /bin/sh -l
-# apk update
-# exit
-# echo "Exited chroot"
-
 echo "Sleeping for 10s....."
 # To sleep for .5 seconds: 
 sleep 10s
