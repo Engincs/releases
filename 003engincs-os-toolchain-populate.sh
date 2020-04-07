@@ -2,14 +2,12 @@
 set -e
 
 # Runme on U(x)buntu 19.10
-wget 
-tar xf x86-64-core-i7--glibc--bleeding-edge-2020.02-2.tar.bz2 
 
 echo "Copy recursively the toolchain to the engincs os directory"
 # Run recursive copy command 
 # Recursive verbose copy cp -avr source /target/
-cp -avr /root/x86-64-core-i7--glibc--bleeding-edge-2020.02-2/x86_64-buildroot-linux-gnu/sysroot /root/engincs-os
-cp -avr /root/x86-64-core-i7--glibc--bleeding-edge-2020.02-2/bin /root/engincs-os/bin
+cp -avr /root/storage/x86-64-core-i7--glibc--bleeding-edge-2020.02-2/x86_64-buildroot-linux-gnu/sysroot /root/engincs-os
+cp -avr /root/storage/x86-64-core-i7--glibc--bleeding-edge-2020.02-2/bin /root/engincs-os/bin
 
 echo "Copy the abuild and tools files to engincs os chroot"
 cd /root/storage/abuild
