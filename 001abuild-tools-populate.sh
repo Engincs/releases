@@ -28,9 +28,9 @@ apk add openssl-libs-static
 # Unfortunately, we cannot statically link libnss, as exactly what providers it loads depends on the local system's configuration
 # Hence below command will fail in glibc systems even with enable --enable-static-nss
 
-cd /root
+cd /root/storage
 git clone https://git.alpinelinux.org/cgit/abuild/
-cd /root/abuild
+cd /root/storage/abuild
 CFLAGS="-no-pie -static" make
 gcc -no-pie -static -O3 -o abuild-fetch abuild-fetch.c -I/usr/include /usr/lib/libc.a 
 gcc -no-pie -static -O3 -o abuild-gzsplit abuild-gzsplit.c -I/usr/include /lib/libz.a /usr/lib/libc.a 
