@@ -36,6 +36,15 @@ cd /root/storage/tar-1.32/src
 rm -rf /root/engincs-os/bin/tar
 cp tar /root/engincs-os/bin
 
+cd /root/storage/wget-1.20.3/src
+rm -rf /root/engincs-os/bin/wget
+cp wget /root/engincs-os/bin
+
+cd /root/
+mkdir /root/engincs-os/etc/ssl
+cp -avr /root/abuild-tools/etc/ssl/certs /root/engincs-os/etc/ssl
+cp /root/abuild-tools/etc/ssl/cert.pem /root/engincs-os/etc/ssl/cert.pem
+
 # Crosstool-ng is not feasible due inaccurate ldd pointers
 # GCC and GNU ld are configured against a common sysroot --sysroot=path. 
 # This means that where ld scripts refer to their subordinate libraries using an absolute path, the path is still relative to sysroot.
