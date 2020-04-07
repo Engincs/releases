@@ -26,7 +26,7 @@ STORAGE=/root/storage
 STORAGE_APK=/root/storage/apk
 
 CHROOT=/root/abuild-tools
-if [ ! -d $CHROOT ]]; then
+if [ ! -e $CHROOT ]]; then
     mkdir $CHROOT
 else
     echo "$CHROOT already exists but is not a directory, discontinuing" 1>&2
@@ -34,7 +34,7 @@ else
 fi
 
 STORAGE=/root/storage
-if [ ! -d $STORAGE ]; then
+if [ ! -e $STORAGE ]; then
     mkdir $STORAGE
 else 
     echo "$STORAGE Common storage already exists but is not a directory, discontinuing" 1>&2
@@ -97,9 +97,9 @@ echo "Binding common storage to engincs os storage"
 mount -o bind $STORAGE $CHROOT/root/storage
 
 echo "Clone aports and fetch the latest updates"
-if [[ ! -e $STORAGE_APK ]]; then
+if [ ! -e $STORAGE_APK]; then
     mkdir $STORAGE_APK
-elif [[ ! -d $STORAGE_APK ]]; then
+else
     echo "$STORAGE aports already cloned discontinuing" 1>&2
     return 1
 fi
