@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 # Runme on U(x)buntu 19.10
-
+export FORCE_UNSAFE_CONFIGURE=1 
 echo "Copying tools patch, scanelf from pax-utils"
 cd /root/storage
 cp /usr/bin/patch /root/storage
