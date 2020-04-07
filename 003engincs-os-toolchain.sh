@@ -2,10 +2,6 @@
 set -e
 
 # Runme on U(x)buntu 19.10
-apt -y install build-essential autoconf bison flex texinfo help2man gawk libtool libncurses5-dev python3-dev python3-distutils git gettext libtool-bin libtool-doc 
-apt -y install ncurses-dev bison texinfo flex autoconf automake libtool patch curl cvs build-essential subversion gawk gperf libncurses5-dev libexpat1-dev
-apt-get install zliblg-dev
-apt-get install libssl-dev
 
 echo "Copy recursively the toolchain to the engincs os directory"
 # Run recursive copy command 
