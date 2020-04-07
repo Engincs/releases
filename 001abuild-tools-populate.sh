@@ -47,8 +47,6 @@ apk add lua-aports
 cd /root/aports/main
 ap builddirs * > /root/storage/build-order.log
 
-echo "Build busybox"
-
 # BUILD AND COPY TO COMMON STORAGE
 # 0. Abuild
 # 1. patch - copy - patch
