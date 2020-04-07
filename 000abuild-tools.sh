@@ -1,7 +1,8 @@
 #!/bin/sh
 set -e
-
 # Runme on U(x)buntu 19.10
+STORAGE=/root/storage
+
 CHROOT=/root/abuild-tools
 if [[ ! -e $CHROOT ]]; then
     mkdir $CHROOT
@@ -65,11 +66,15 @@ mount -o bind /sys $CHROOT/sys
 echo "Creating root directory"
 mkdir -p $CHROOT/root
 
+echo "Creating comming storage directory"
+mkdir -p $CHROOT/root/storage
+echo "Binding storage to chroot storage"
+mount -o bind $STORAGE $CHROOT/root/storage
+
 echo "creating resolv.conf"
 cp /etc/resolv.conf /root/engincs-os-chroot/etc/ 
 #echo -e 'nameserver 8.8.8.8\nnameserver 2620:0:ccc::2' > /root/engincs-os-chroot/etc/resolv.conf
 printf 'nameserver 8.8.8.8\nnameserver 2620:0:ccc::2' > $CHROOT/etc/resolv.conf
-
 
 echo "creating repositories folder"
 mkdir -p $CHROOT/etc/apk 
