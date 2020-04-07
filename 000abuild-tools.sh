@@ -6,7 +6,7 @@ CHROOT=/root/abuild-tools
 if [[ ! -e $CHROOT ]]; then
     mkdir $CHROOT
 elif [[ ! -d $CHROOT ]]; then
-    echo "$dir already exists but is not a directory, returning to prompt" 1>&2
+    echo "$CHROOT already exists but is not a directory, returning to prompt" 1>&2
     return 1
 fi
 
