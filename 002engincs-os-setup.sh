@@ -3,9 +3,9 @@ set -e
 # Runme on U(x)buntu 19.10
 CHROOT=/root/abuild-tools
 ENGINCS_OS=/root/engincs-os
-if [[ ! -e $ENGINCS_OS ]]; then
+if [ ! -e $ENGINCS_OS ]; then
     mkdir $ENGINCS_OS
-elif [[ ! -d $ENGINCS_OS ]]; then
+elif [ ! -d $ENGINCS_OS ]; then
     echo "$ENGINCS_OS already exists but is not a directory, returning to prompt" 1>&2
     return 1
 fi
