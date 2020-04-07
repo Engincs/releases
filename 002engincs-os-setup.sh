@@ -33,16 +33,15 @@ fi
 
 echo "umounting dev/proc/sys"
 
-MOUNT = $CHROOT/dev
-if grep -qs $MOUNT /proc/mounts; then
+
+if grep -qs $CHROOT/dev /proc/mounts; then
   echo "dev's mounted."
   umount $CHROOT/dev
 else
   echo "dev's not mounted."; then
 fi
 
-MOUNT = $CHROOT/sys
-if grep -qs $MOUNT /proc/mounts; then
+if grep -qs $CHROOT/sys /proc/mounts; then
   echo "sys's mounted."
   umount $CHROOT/sys
 else
@@ -50,7 +49,7 @@ else
 fi
 
 MOUNT = $CHROOT/proc
-if grep -qs $MOUNT /proc/mounts; then
+if grep -qs $CHROOT/proc /proc/mounts; then
   echo "proc's mounted."
   umount $CHROOT/proc
 else
