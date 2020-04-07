@@ -31,7 +31,6 @@ printf 'nameserver 8.8.8.8\nnameserver 2620:0:ccc::2' > $ENGINCS_OS/etc/resolv.c
 # /root/x-tools/x86_64-linux-gnu/x86_64-inux-gnu/sysroot/usr/lib
 # /root/x-tools/x86_64-linux-gnu/lib
 
-
 # OPTION 2
 # To set it temporarily, use the LD_LIBRARY_PATH environment variable on the command line. 
 # If you want to keep the changes permanent, then add this line in the shell initialization file /etc/profile (global) or ~/.profile (user specific).
