@@ -2,6 +2,13 @@
 set -e
 
 # Runme on U(x)buntu 19.10
+CHROOT=/root/abuild-tools
+if [[ ! -e $CHROOT ]]; then
+    mkdir $CHROOT
+elif [[ ! -d $CHROOT ]]; then
+    echo "$dir already exists but is not a directory, returning to prompt" 1>&2
+    return 1
+fi
 
 TARGET_ARCH=$1
 # HINT: Look at cat /etc/apk/arch 
@@ -38,36 +45,36 @@ rm -rf sbin/
 
 echo "Creating chroot with busybox, alpine-keys and apk-tools"
 #./apk -X http://dl-cdn.alpinelinux.org/alpine/edge/main/ -U --allow-untrusted --root /root/engincs-os-chroot/ --initdb add busybox-static apk-tools-static alpine-keys
-./apk -X http://dl-cdn.alpinelinux.org/alpine/edge/main/ -U --allow-untrusted --arch $TARGET_ARCH --root /root/engincs-os-chroot/ --initdb add busybox-static apk-tools-static alpine-keys linux-headers
+./apk -X http://dl-cdn.alpinelinux.org/alpine/edge/main/ -U --allow-untrusted --arch $TARGET_ARCH --root $CHROOT --initdb add busybox-static apk-tools-static alpine-keys linux-headers
 
 echo "Binding and mounting dev, proc and sys"
-mkdir /root/engincs-os-chroot/sys
-mount /dev/ /root/engincs-os-chroot/dev/ --bind
-mount -o remount,ro,bind /root/engincs-os-chroot/dev
-mount -t proc none /root/engincs-os-chroot/proc 
-mount -o bind /sys /root/engincs-os-chroot/sys
+mkdir $CHROOT/sys
+mount /dev/ $CHROOT/dev/ --bind
+mount -o remount,ro,bind $CHROOT/dev
+mount -t proc none $CHROOT/proc 
+mount -o bind /sys $CHROOT/sys
 
 echo "Creating root directory"
-mkdir -p /root/engincs-os-chroot/root
+mkdir -p $CHROOT/root
 
 echo "creating resolv.conf"
 cp /etc/resolv.conf /root/engincs-os-chroot/etc/ 
 #echo -e 'nameserver 8.8.8.8\nnameserver 2620:0:ccc::2' > /root/engincs-os-chroot/etc/resolv.conf
-printf 'nameserver 8.8.8.8\nnameserver 2620:0:ccc::2' > /root/engincs-os-chroot/etc/resolv.conf
+printf 'nameserver 8.8.8.8\nnameserver 2620:0:ccc::2' > $CHROOT/etc/resolv.conf
 
 
 echo "creating repositories folder"
-mkdir -p /root/engincs-os-chroot/etc/apk 
+mkdir -p $CHROOT/etc/apk 
 printf 'http://dl-cdn.alpinelinux.org/alpine/edge/main/\nhttp://dl-cdn.alpinelinux.org/alpine/edge/community/\nhttp://dl-cdn.alpinelinux.org/alpine/edge/testing/' > /root/engincs-os-chroot/etc/apk/repositories
 
 echo "Chroot and generate busybox symbolic links"
 #chroot /root/engincs-os-chroot/ busybox.static sh
-chroot /root/engincs-os-chroot/ /bin/busybox.static --install -s /bin
+chroot $CHROOT /bin/busybox.static --install -s /bin
 #exit
 echo "Exited chroot"
 
 echo "moving apk required for abuild"
-mv /root/engincs-os-chroot/sbin/apk.static /root/engincs-os-chroot/sbin/apk
+mv $CHROOT/sbin/apk.static $CHROOT/sbin/apk
 
 echo "Chroot and run apk update"
 #chroot /root/engincs-os-chroot/ /bin/sh -l
