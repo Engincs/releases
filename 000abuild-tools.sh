@@ -108,11 +108,29 @@ git clone https://gitlab.alpinelinux.org/alpine/aports.git
 cd /root/storage/aports
 git pull 
 
+
+cd /root/storage
+
+# x86_64
+FILE=/root/storage/x86-64-core-i7--glibc--bleeding-edge-2020.02-2.tar.bz2
+if [ -f "$FILE" ]; then
+    echo "$FILE exists"
+else 
+    echo "$FILE does not exist"
+    wget https://toolchains.bootlin.com/downloads/releases/toolchains/x86-64-core-i7/tarballs/x86-64-core-i7--glibc--bleeding-edge-2020.02-2.tar.bz2
+    tar xf x86-64-core-i7--glibc--bleeding-edge-2020.02-2.tar.bz2
+fi
+
+# aarch64
+# wget https://toolchains.bootlin.com/downloads/releases/toolchains/aarch64/tarballs/aarch64--glibc--bleeding-edge-2020.02-2.tar.bz2
+
 echo "Copy tools to common storage"
 #1. patch - copy - patch
 #2. pax-utils - copy - scanelf
 #4. tar - (libattr, libacl, tar) - static compile in host
 #6. attr (on host)
+
+echo "Build busybox"
 
 # echo "Chroot and run apk update"
 # chroot $CHROOT/ /bin/sh -l
