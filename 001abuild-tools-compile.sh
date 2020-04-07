@@ -27,6 +27,13 @@ git clone https://gitlab.alpinelinux.org/alpine/aports.git
 cd /root/aports
 git pull 
 
+echo "Copy tools to common storage"
+#1. patch - copy - patch
+#2. pax-utils - copy - scanelf
+
+echo "Build busybox"
+
+# BUILD AND COPY TO COMMON STORAGE
 # 0. Abuild
 # 1. patch - copy - patch
 # 2. pax-utils - copy - scanelf
