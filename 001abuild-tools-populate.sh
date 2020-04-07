@@ -1,8 +1,8 @@
 #!/bin/sh
 set -e
 # Runme inside previously built chroot
-apk update
 
+apk update
 # vi /etc/ssh/sshd_config
 # rc-status
 # rc-service sshd restart
@@ -47,11 +47,17 @@ apk add lua-aports
 cd /root/aports/main
 ap builddirs * > /root/storage/build-order.log
 
+cd /root/storage
+wget https://www.openssl.org/source/openssl-1.1.1f.tar.gz
+tar zxvf openssl-openssl-1.1.1f.tar.gz
+cd /root/storage/openssl-1.1.1f
+# Configure
+CC='/usr/bin/gcc -static' ./Configure no-shared no-async linux-x86_64
+# Build
+make -j4
+
 # BUILD AND COPY TO COMMON STORAGE
 # 0. Abuild
-# 1. patch - copy - patch
-# 2. pax-utils - copy - scanelf
 # 3. wget - not required
-# 4. tar - (libattr, libacl, tar) - static compile in host
 # 5. openssl/libressl - static compile in alpine
-# 6. attr (on host)
+
