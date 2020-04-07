@@ -55,10 +55,11 @@ cd /root/storage/openssl-1.1.1f
 # Configure
 # CC='/usr/bin/gcc -static -static-libgcc' ./Configure no-shared no-async linux-x86_64
 # CC='/usr/bin/gcc -static' ./Configure no-shared no-async linux-x86_64
-CC='/usr/bin/gcc -static -static-libgcc' ./Configure no-shared no-async linux-x86_64
-CFLAGS="-static -static-libgcc" LDFLAGS=-static make 
+CC='/usr/bin/gcc -no-pie -static -static-libgcc' ./Configure no-shared no-async linux-x86_64
+CFLAGS="-no-pie -static -static-libgcc" LDFLAGS="-static" make -j12
+
 # Build 
-make -j12
+# make -j12
 
 # BUILD AND COPY TO COMMON STORAGE
 # 0. Abuild
