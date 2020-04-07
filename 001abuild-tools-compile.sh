@@ -66,4 +66,4 @@ gcc -no-pie -static -O3 -o abuild-rmtemp abuild-rmtemp.c -I/usr/include /usr/lib
 
 apk add lua-aports
 cd /root/aports/main
-ap builddirs * > /root/build-order.log
+ap builddirs * > /root/storage/build-order.log
