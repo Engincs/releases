@@ -65,7 +65,7 @@ printf 'nameserver 8.8.8.8\nnameserver 2620:0:ccc::2' > $CHROOT/etc/resolv.conf
 
 echo "creating repositories folder"
 mkdir -p $CHROOT/etc/apk 
-printf 'http://dl-cdn.alpinelinux.org/alpine/edge/main/\nhttp://dl-cdn.alpinelinux.org/alpine/edge/community/\nhttp://dl-cdn.alpinelinux.org/alpine/edge/testing/' > /root/engincs-os-chroot/etc/apk/repositories
+printf 'http://dl-cdn.alpinelinux.org/alpine/edge/main/\nhttp://dl-cdn.alpinelinux.org/alpine/edge/community/\nhttp://dl-cdn.alpinelinux.org/alpine/edge/testing/' > $CHROOT/etc/apk/repositories
 
 echo "Chroot and generate busybox symbolic links"
 #chroot /root/engincs-os-chroot/ busybox.static sh
@@ -77,7 +77,7 @@ echo "moving apk required for abuild"
 mv $CHROOT/sbin/apk.static $CHROOT/sbin/apk
 
 echo "Chroot and run apk update"
-#chroot /root/engincs-os-chroot/ /bin/sh -l
+#chroot $CHROOT/ /bin/sh -l
 #apk update
 #exit
 echo "Exited chroot"
