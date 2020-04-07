@@ -1,3 +1,7 @@
+#!/bin/sh
+set -e
+# Runme on U(x)buntu 19.10
+
 echo "Copy tools to common storage"
 #1. patch - copy - patch
 #2. pax-utils - copy - scanelf
