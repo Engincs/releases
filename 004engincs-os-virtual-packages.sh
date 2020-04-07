@@ -75,6 +75,6 @@ echo "Please make sure to run abuild-keygen with a and i options\n"
 # abuild-keygen -a -i 
 # which created keys and wrote in the host /etc/abuild.conf file automatically
 echo "============================================================\n"
-echo "Edit /usr/share/abuild/functions.sh to replace musl with gnu"
+echo "Edit /usr/share/abuild/functions.sh to replace musl with gnu\n"
 echo "============================================================\n"
 echo "Create links in /bin folder for gcc"
