@@ -1,23 +1,6 @@
 #!/bin/sh
 set -e
 # Runme on U(x)buntu 19.10
-STORAGE=/root/storage
-
-CHROOT=/root/abuild-tools
-if [[ ! -e $CHROOT ]]; then
-    mkdir $CHROOT
-elif [[ ! -d $CHROOT ]]; then
-    echo "$CHROOT already exists but is not a directory, returning to prompt" 1>&2
-    return 1
-fi
-
-STORAGE=/root/storage
-if [[ ! -e $STORAGE ]]; then
-    mkdir $STORAGE
-elif [[ ! -d $CHROOT ]]; then
-    echo "$STORAGE Common storage already exists but is not a directory, returning to prompt" 1>&2
-    return 1
-fi
 
 TARGET_ARCH=$1
 # HINT: Look at cat /etc/apk/arch 
@@ -37,6 +20,24 @@ if [ -z "$TARGET_ARCH" ]; then
  printf 'IBM SYSTEM Z BASED\n'
  printf 's390x\n\n'
  return 1
+fi
+
+STORAGE=/root/storage
+
+CHROOT=/root/abuild-tools
+if [[ ! -e $CHROOT ]]; then
+    mkdir $CHROOT
+elif [[ ! -d $CHROOT ]]; then
+    echo "$CHROOT already exists but is not a directory, returning to prompt" 1>&2
+    return 1
+fi
+
+STORAGE=/root/storage
+if [[ ! -e $STORAGE ]]; then
+    mkdir $STORAGE
+elif [[ ! -d $CHROOT ]]; then
+    echo "$STORAGE Common storage already exists but is not a directory, returning to prompt" 1>&2
+    return 1
 fi
 
 # Getting read for Glibc port of Alpine - Test script only
