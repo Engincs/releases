@@ -44,6 +44,7 @@ gcc -no-pie -static -O3 -o abuild-rmtemp abuild-rmtemp.c -I/usr/include /usr/lib
 # bzip2 is first, it has no dependencies at all, same with zlib, perl only depends on those 2 packages
 
 apk add lua-aports
+cd /root/storage/aports/main
 ap builddirs * > /root/storage/build-order.log
 
 cd /root/storage
