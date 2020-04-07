@@ -76,13 +76,13 @@ echo "Exited chroot"
 echo "moving apk required for abuild"
 mv $CHROOT/sbin/apk.static $CHROOT/sbin/apk
 
-echo "Chroot and run apk update"
-#chroot $CHROOT/ /bin/sh -l
-#apk update
-#exit
-echo "Exited chroot"
+# echo "Chroot and run apk update"
+# chroot $CHROOT/ /bin/sh -l
+# apk update
+# exit
+# echo "Exited chroot"
 
-echo "Unmounting directories"
+echo "Sleeping for 10s....."
 # To sleep for .5 seconds: 
 sleep 10s
 #mount - commented out for abuild to run properly
