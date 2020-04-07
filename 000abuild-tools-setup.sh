@@ -45,7 +45,7 @@ fi
 cd /root/
 
 apt -y install build-essential autoconf bison flex texinfo help2man gawk libtool libncurses5-dev python3-dev python3-distutils git gettext libtool-bin libtool-doc 
-apt -y install ncurses-dev bison texinfo flex autoconf automake libtool patch curl cvs build-essential subversion gawk gperf libncurses5-dev libexpat1-dev vim
+apt -y install pax-utils ncurses-dev bison texinfo flex autoconf automake libtool patch curl cvs build-essential subversion gawk gperf libncurses5-dev libexpat1-dev vim
 apt-get install zlib1g-dev
 apt-get install libssl-dev
 
