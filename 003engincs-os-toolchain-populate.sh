@@ -6,8 +6,8 @@ set -e
 echo "Copy recursively the toolchain to the engincs os directory"
 # Run recursive copy command 
 # Recursive verbose copy cp -avr source /target/
-cp -avr /root/storage/x86-64-core-i7--glibc--bleeding-edge-2020.02-2/x86_64-buildroot-linux-gnu/sysroot /root/engincs-os
-cp -avr /root/storage/x86-64-core-i7--glibc--bleeding-edge-2020.02-2/bin /root/engincs-os/bin
+cp -avr /root/storage/x86-64-core-i7--glibc--bleeding-edge-2020.02-2/x86_64-buildroot-linux-gnu/sysroot/* /root/engincs-os
+cp -avr /root/storage/x86-64-core-i7--glibc--bleeding-edge-2020.02-2/bin/* /root/engincs-os/bin
 
 echo "Copy the abuild and tools files to engincs os chroot"
 cd /root/storage/abuild
@@ -22,7 +22,19 @@ cp sample.confd sample.initd functions.sh sample.APKBUILD sample.post-install sa
 cp tests/testrepo/pkg1/APKBUILD /root/engincs-os/usr/share/abuild/APKBUILD-SAMPLE
 
 echo "copying rest of tools"
+cd /root/storage
+rm -rf /root/engincs-os/bin/patch
+cp patch scanelf /root/engincs-os/bin
 
+cd /root/storage/attr-2.4.48
+cp attr getfattr setfattr /root/engincs-os/bin
+
+cd /root/storage/openssl-1.1.1f/apps
+cp openssl /root/engincs-os/bin
+
+cd /root/storage/tar-1.32/src
+rm -rf /root/engincs-os/bin/tar
+cp tar /root/engincs-os/bin
 
 # Crosstool-ng is not feasible due inaccurate ldd pointers
 # GCC and GNU ld are configured against a common sysroot --sysroot=path. 
