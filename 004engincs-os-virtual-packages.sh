@@ -1,5 +1,6 @@
 echo "Setting up $PATH and links inside chroot"
-
+touch /etc/ld.so.conf
+ldconfig
 # Notice that /root/engincs-os-chroot/root/x-tools/x86_64-unknown-linux/bin comes last in the PATH. 
 # This means that a temporary tool will no longer be used once its final version is installed. 
 # This occurs when the shell does not “remember” the locations of executed binaries—
