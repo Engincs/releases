@@ -6,6 +6,7 @@ echo "Copying tools patch, scanelf from pax-utils"
 cd /root/storage
 cp /usr/bin/patch /root/storage
 cp /usr/bin/scanelf /root/storage
+cp /usr/bin/make /root/storage
 
 echo "Compiling static version of attr to common storage"
 cd /root/storage
