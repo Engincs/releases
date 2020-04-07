@@ -21,27 +21,6 @@ apk add openssl-libs-static
 
 # vi /etc/passwd change from root:x:0:0:root:/root:/bin/ash to root:x:0:0:root:/root:/bin/bash
 
-# Clone aports and fetch the latest updates
-cd /root/
-git clone https://gitlab.alpinelinux.org/alpine/aports.git
-cd /root/aports
-git pull 
-
-echo "Copy tools to common storage"
-#1. patch - copy - patch
-#2. pax-utils - copy - scanelf
-
-echo "Build busybox"
-
-# BUILD AND COPY TO COMMON STORAGE
-# 0. Abuild
-# 1. patch - copy - patch
-# 2. pax-utils - copy - scanelf
-# 3. wget - not required
-# 4. tar - (libattr, libacl, tar) - static compile in host
-# 5. openssl/libressl - static compile in alpine
-# 6. attr (on host)
-
 # Static compile abuild
 # Note: If we pass -no-pie to GCC on Alpine, its binary will not be PIE-enabled just like Ubuntu binary isn't PIE-enabled, 
 # but then it will be statically linked as we want
@@ -67,3 +46,24 @@ gcc -no-pie -static -O3 -o abuild-rmtemp abuild-rmtemp.c -I/usr/include /usr/lib
 apk add lua-aports
 cd /root/aports/main
 ap builddirs * > /root/storage/build-order.log
+
+echo "Copy tools to common storage"
+#1. patch - copy - patch
+#2. pax-utils - copy - scanelf
+
+echo "Build busybox"
+
+# BUILD AND COPY TO COMMON STORAGE
+# 0. Abuild
+# 1. patch - copy - patch
+# 2. pax-utils - copy - scanelf
+# 3. wget - not required
+# 4. tar - (libattr, libacl, tar) - static compile in host
+# 5. openssl/libressl - static compile in alpine
+# 6. attr (on host)
+
+# Clone aports and fetch the latest updates
+cd /root/storage
+git clone https://gitlab.alpinelinux.org/alpine/aports.git
+cd /root/storage/aports
+git pull 
