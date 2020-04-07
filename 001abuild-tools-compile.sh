@@ -27,6 +27,14 @@ git clone https://gitlab.alpinelinux.org/alpine/aports.git
 cd /root/aports
 git pull 
 
+# 0. Abuild
+# 1. patch - copy - patch
+# 2. pax-utils - copy - scanelf
+# 3. wget - not required
+# 4. tar - (libattr, libacl, tar) - static compile in host
+# 5. openssl/libressl - static compile in alpine
+# 6. attr (on host)
+
 # Static compile abuild
 # Note: If we pass -no-pie to GCC on Alpine, its binary will not be PIE-enabled just like Ubuntu binary isn't PIE-enabled, 
 # but then it will be statically linked as we want
