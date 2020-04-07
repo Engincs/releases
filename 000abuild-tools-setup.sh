@@ -97,7 +97,7 @@ echo "Binding common storage to engincs os storage"
 mount -o bind $STORAGE $CHROOT/root/storage
 
 echo "Clone aports and fetch the latest updates"
-if [ ! -e $STORAGE_APK]; then
+if [ ! -d $STORAGE_APK]; then
     mkdir $STORAGE_APK
 else
     echo "$STORAGE aports already cloned discontinuing" 1>&2
