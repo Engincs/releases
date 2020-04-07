@@ -47,10 +47,6 @@ apk add lua-aports
 cd /root/aports/main
 ap builddirs * > /root/storage/build-order.log
 
-echo "Copy tools to common storage"
-#1. patch - copy - patch
-#2. pax-utils - copy - scanelf
-
 echo "Build busybox"
 
 # BUILD AND COPY TO COMMON STORAGE
@@ -61,9 +57,3 @@ echo "Build busybox"
 # 4. tar - (libattr, libacl, tar) - static compile in host
 # 5. openssl/libressl - static compile in alpine
 # 6. attr (on host)
-
-# Clone aports and fetch the latest updates
-cd /root/storage
-git clone https://gitlab.alpinelinux.org/alpine/aports.git
-cd /root/storage/aports
-git pull 
