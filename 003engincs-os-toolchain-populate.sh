@@ -25,6 +25,7 @@ echo "copying rest of tools"
 cd /root/storage
 rm -rf /root/engincs-os/bin/patch
 cp patch scanelf /root/engincs-os/bin
+cp make /root/engincs-os/bin
 
 cd /root/storage/attr-2.4.48
 cp attr getfattr setfattr /root/engincs-os/bin
