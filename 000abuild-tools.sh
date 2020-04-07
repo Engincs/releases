@@ -23,20 +23,21 @@ if [ -z "$TARGET_ARCH" ]; then
 fi
 
 STORAGE=/root/storage
+STORAGE_APK=/root/storage/apk
 
 CHROOT=/root/abuild-tools
 if [[ ! -e $CHROOT ]]; then
     mkdir $CHROOT
 elif [[ ! -d $CHROOT ]]; then
-    echo "$CHROOT already exists but is not a directory, returning to prompt" 1>&2
+    echo "$CHROOT already exists but is not a directory, discontinuing" 1>&2
     return 1
 fi
 
 STORAGE=/root/storage
 if [[ ! -e $STORAGE ]]; then
     mkdir $STORAGE
-elif [[ ! -d $CHROOT ]]; then
-    echo "$STORAGE Common storage already exists but is not a directory, returning to prompt" 1>&2
+elif [[ ! -d $STORAGE ]]; then
+    echo "$STORAGE Common storage already exists but is not a directory, discontinuing" 1>&2
     return 1
 fi
 
@@ -94,6 +95,24 @@ echo "Creating comming storage directory"
 mkdir -p $CHROOT/root/storage
 echo "Binding common storage to engincs os storage"
 mount -o bind $STORAGE $CHROOT/root/storage
+
+echo "Clone aports and fetch the latest updates"
+if [[ ! -e $STORAGE_APK ]]; then
+    mkdir $STORAGE_APK
+elif [[ ! -d $STORAGE_APK ]]; then
+    echo "$STORAGE aports already cloned discontinuing" 1>&2
+    return 1
+fi
+cd /root/storage
+git clone https://gitlab.alpinelinux.org/alpine/aports.git
+cd /root/storage/aports
+git pull 
+
+echo "Copy tools to common storage"
+#1. patch - copy - patch
+#2. pax-utils - copy - scanelf
+#4. tar - (libattr, libacl, tar) - static compile in host
+#6. attr (on host)
 
 # echo "Chroot and run apk update"
 # chroot $CHROOT/ /bin/sh -l
