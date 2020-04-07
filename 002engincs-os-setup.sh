@@ -33,28 +33,26 @@ fi
 
 echo "umounting dev/proc/sys"
 
-
-if grep -qs $CHROOT/dev /proc/mounts; then
+if mount|grep $CHROOT/dev; then
   echo "dev's mounted."
   umount $CHROOT/dev
 else
-  echo "dev's not mounted."; then
-fi
+  echo "dev's not mounted."
+if
 
-if grep -qs $CHROOT/sys /proc/mounts; then
+if mount|grep $CHROOT/sys; then
   echo "sys's mounted."
   umount $CHROOT/sys
 else
-  echo "sys's not mounted."; then
-fi
+  echo "sys's not mounted."
+if
 
-MOUNT = $CHROOT/proc
-if grep -qs $CHROOT/proc /proc/mounts; then
+if mount|grep $CHROOT/proc; then
   echo "proc's mounted."
   umount $CHROOT/proc
 else
-  echo "proc's not mounted."; then
-fi
+  echo "proc's not mounted."
+if
 
 # Getting read for Glibc port of Alpine - Test script only
 cd /root/
