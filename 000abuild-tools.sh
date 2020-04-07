@@ -47,12 +47,6 @@ apt -y install ncurses-dev bison texinfo flex autoconf automake libtool patch cu
 apt-get install zliblg-dev
 apt-get install libssl-dev
 
-echo "Copy tools to common storage"
-#1. patch - copy - patch
-#2. pax-utils - copy - scanelf
-
-echo "Build busybox"
-
 echo "Getting apktools static version 64-bit"
 export APKTOOLSVERSION=2.10.5-r0
 wget http://dl-cdn.alpinelinux.org/alpine/edge/main/$TARGET_ARCH/apk-tools-static-$APKTOOLSVERSION.apk
