@@ -90,7 +90,7 @@ mkdir -p $ENGINCS_OS/etc/apk
 printf 'http://dl-cdn.alpinelinux.org/alpine/edge/main/\nhttp://dl-cdn.alpinelinux.org/alpine/edge/community/\nhttp://dl-cdn.alpinelinux.org/alpine/edge/testing/' > $ENGINCS_OS/etc/apk/repositories
 
 echo "Chroot and generate busybox symbolic links"
-#chroot /root/engincs-os-chroot/ busybox.static sh
+#chroot $ENGINCS_OS busybox.static sh
 chroot $ENGINCS_OS/ /bin/busybox.static --install -s /bin
 #exit
 echo "Exited chroot"
