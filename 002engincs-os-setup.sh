@@ -79,3 +79,19 @@ echo "Exited chroot"
 
 echo "moving apk required for abuild"
 mv $ENGINCS_OS/sbin/apk.static $ENGINCS_OS/sbin/apk
+
+STORAGE=/root/storage
+echo "Creating common storage directory"
+mkdir -p $ENGINCS_OS/root/storage
+echo "Binding common storage to engincs os storage"
+mount -o bind $STORAGE $ENGINCS_OS/root/storage
+
+echo "Sleeping for 10s....."
+# To sleep for .5 seconds: 
+sleep 10s
+#mount - commented out for abuild to run properly
+echo "unmounting, please remount for abuild to run properly"
+umount $ENGINCS_OS/dev
+umount $ENGINCS_OS/proc
+umount $ENGINCS_OS/sys
+#mount
