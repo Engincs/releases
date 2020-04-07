@@ -77,11 +77,6 @@ mount -o bind /sys $CHROOT/sys
 echo "Creating root directory"
 mkdir -p $CHROOT/root
 
-echo "Creating comming storage directory"
-mkdir -p $CHROOT/root/storage
-echo "Binding storage to chroot storage"
-mount -o bind $STORAGE $CHROOT/root/storage
-
 echo "creating resolv.conf"
 cp /etc/resolv.conf /root/engincs-os-chroot/etc/ 
 #echo -e 'nameserver 8.8.8.8\nnameserver 2620:0:ccc::2' > /root/engincs-os-chroot/etc/resolv.conf
@@ -99,6 +94,11 @@ echo "Exited chroot"
 
 echo "moving apk required for abuild"
 mv $CHROOT/sbin/apk.static $CHROOT/sbin/apk
+
+echo "Creating comming storage directory"
+mkdir -p $CHROOT/root/storage
+echo "Binding common storage to engincs os storage"
+mount -o bind $STORAGE $CHROOT/root/storage
 
 # echo "Chroot and run apk update"
 # chroot $CHROOT/ /bin/sh -l
