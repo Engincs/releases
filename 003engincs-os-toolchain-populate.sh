@@ -2,25 +2,28 @@
 set -e
 
 # Runme on U(x)buntu 19.10
+wget 
+tar xf x86-64-core-i7--glibc--bleeding-edge-2020.02-2.tar.bz2 
 
 echo "Copy recursively the toolchain to the engincs os directory"
 # Run recursive copy command 
 # Recursive verbose copy cp -avr source /target/
-cp -avr /root/x-tools/ /root/new-engincs-os-chroot/root/
+cp -avr /root/x86-64-core-i7--glibc--bleeding-edge-2020.02-2/x86_64-buildroot-linux-gnu/sysroot /root/engincs-os
+cp -avr /root/x86-64-core-i7--glibc--bleeding-edge-2020.02-2/bin /root/engincs-os/bin
 
 echo "Copy the abuild and tools files to engincs os chroot"
-mkdir /root/new-engincs-os-chroot/usr/bin
-cd /root/engincs-os-chroot/root/abuild
-cp abuild abuild-fetch abuild-gzsplit abuild-keygen abuild-rmtemp abuild-sign abuild-sudo abuild-tar /root/new-engincs-os-chroot/usr/bin
-cp abump apkbuild-cpan apkbuild-gem-resolver /root/new-engincs-os-chroot/usr/bin
-cp apkbuild-pypi apkgrel newapkbuild bootchartd buildlab checkapk /root/new-engincs-os-chroot/usr/bin
+cd /root/storage/abuild
+cp abuild abuild-fetch abuild-gzsplit abuild-keygen abuild-rmtemp abuild-sign abuild-sudo abuild-tar /root/engincs-os/usr/bin
+cp abump apkbuild-cpan apkbuild-gem-resolver /root/engincs-os/usr/bin
+cp apkbuild-pypi apkgrel newapkbuild bootchartd buildlab checkapk /root/engincs-os/usr/bin
 
-cp abuild.conf /root/new-engincs-os-chroot/etc/
+cp abuild.conf /root/engincs-os/etc/
 
-mkdir /root/new-engincs-os-chroot/usr/share/abuild
-cp sample.confd sample.initd functions.sh sample.APKBUILD sample.post-install sample.pre-install config.sub /root/new-engincs-os-chroot/usr/share/abuild
+mkdir /root/engincs-os/usr/share/abuild
+cp sample.confd sample.initd functions.sh sample.APKBUILD sample.post-install sample.pre-install config.sub /root/engincs-os/usr/share/abuild
+cp tests/testrepo/pkg1/APKBUILD /root/engincs-os/usr/share/abuild/APKBUILD-SAMPLE
 
-cp /root/engincs-os-chroot/root/abuild/tests/testrepo/pkg1/APKBUILD /root/new-engincs-os-chroot/usr/share/abuild/APKBUILD-SAMPLE
+echo "copying rest of tools"
 
 
 # Crosstool-not not feasible due inaccurate ldd pointers
