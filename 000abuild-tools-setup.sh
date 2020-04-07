@@ -119,7 +119,9 @@ else
     wget https://toolchains.bootlin.com/downloads/releases/toolchains/x86-64-core-i7/tarballs/x86-64-core-i7--glibc--bleeding-edge-2020.02-2.tar.bz2
     tar xf x86-64-core-i7--glibc--bleeding-edge-2020.02-2.tar.bz2
 fi
-
+echo "Removing apk file"
+cd /root
+rm -rf apk
 # aarch64
 # wget https://toolchains.bootlin.com/downloads/releases/toolchains/aarch64/tarballs/aarch64--glibc--bleeding-edge-2020.02-2.tar.bz2
 
