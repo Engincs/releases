@@ -38,7 +38,7 @@ if grep -qs $MOUNT /proc/mounts; then
   echo "It's mounted."
   umount $CHROOT/dev
 else
-  echo "It's not mounted."; then
+  echo "dev's not mounted."; then
 fi
 
 MOUNT = $CHROOT/sys
@@ -46,7 +46,7 @@ if grep -qs $MOUNT /proc/mounts; then
   echo "It's mounted."
   umount $CHROOT/sys
 else
-  echo "It's not mounted."; then
+  echo "sys's not mounted."; then
 fi
 
 MOUNT = $CHROOT/proc
@@ -54,7 +54,7 @@ if grep -qs $MOUNT /proc/mounts; then
   echo "It's mounted."
   umount $CHROOT/proc
 else
-  echo "It's not mounted."; then
+  echo "proc's not mounted."; then
 fi
 
 # Getting read for Glibc port of Alpine - Test script only
