@@ -26,17 +26,17 @@ STORAGE=/root/storage
 STORAGE_APK=/root/storage/apk
 
 CHROOT=/root/abuild-tools
-if [[ ! -e $CHROOT ]]; then
+if [ ! -d $CHROOT ]]; then
     mkdir $CHROOT
-elif [[ ! -d $CHROOT ]]; then
+else
     echo "$CHROOT already exists but is not a directory, discontinuing" 1>&2
     return 1
 fi
 
 STORAGE=/root/storage
-if [[ ! -e $STORAGE ]]; then
+if [ ! -d $STORAGE ]; then
     mkdir $STORAGE
-elif [[ ! -d $STORAGE ]]; then
+else 
     echo "$STORAGE Common storage already exists but is not a directory, discontinuing" 1>&2
     return 1
 fi
