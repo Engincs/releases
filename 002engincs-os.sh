@@ -1,6 +1,14 @@
 #!/bin/sh
 set -e
 # Runme on U(x)buntu 19.10
+CHROOT=/root/abuild-tools
+ENGINCS_OS=/root/engincs-os
+if [[ ! -e $ENGINCS_OS ]]; then
+    mkdir $ENGINCS_OS
+elif [[ ! -d $ENGINCS_OS ]]; then
+    echo "$ENGINCS_OS already exists but is not a directory, returning to prompt" 1>&2
+    return 1
+fi
 
 # build new chroot
 TARGET_ARCH=$1
@@ -24,9 +32,9 @@ if [ -z "$TARGET_ARCH" ]; then
 fi
 
 echo "umount dev/proc/sys"
-umount /root/engincs-os-chroot/dev
-umount /root/engincs-os-chroot/sys
-umount /root/engincs-os-chroot/proc
+umount $CHROOT/dev
+umount $CHROOT/sys
+umount $CHROOT/proc
 
 # Getting read for Glibc port of Alpine - Test script only
 cd /root/
@@ -42,17 +50,17 @@ rm -rf apk-tools-static-*.apk
 rm -rf sbin/
 
 echo "Creating chroot with busybox, alpine-keys and apk-tools"
-./apk -X http://dl-cdn.alpinelinux.org/alpine/edge/main/ -U --allow-untrusted --arch $TARGET_ARCH --root /root/new-engincs-os-chroot/ --initdb add busybox-static apk-tools-static alpine-keys linux-headers
+./apk -X http://dl-cdn.alpinelinux.org/alpine/edge/main/ -U --allow-untrusted --arch $TARGET_ARCH --root $ENGINCS_OS --initdb add busybox-static apk-tools-static alpine-keys linux-headers
 
 echo "Binding and mounting dev, proc and sys"
-mkdir /root/new-engincs-os-chroot/sys
-mount /dev/ /root/new-engincs-os-chroot/dev/ --bind
-mount -o remount,ro,bind /root/new-engincs-os-chroot/dev
-mount -t proc none /root/new-engincs-os-chroot/proc 
-mount -o bind /sys /root/new-engincs-os-chroot/sys
+mkdir $ENGINCS_OS/sys
+mount /dev/ $ENGINCS_OS/dev/ --bind
+mount -o remount,ro,bind $ENGINCS_OS/dev
+mount -t proc none $ENGINCS_OS/proc 
+mount -o bind /sys $ENGINCS_OS/sys
 
 echo "Creating root directory"
-mkdir -p /root/new-engincs-os-chroot/root
+mkdir -p $ENGINCS_OS/root
 
 echo "creating resolv.conf"
 cp /etc/resolv.conf /root/new-engincs-os-chroot/etc/ 
@@ -60,33 +68,14 @@ cp /etc/resolv.conf /root/new-engincs-os-chroot/etc/
 printf 'nameserver 8.8.8.8\nnameserver 2620:0:ccc::2' > /root/new-engincs-os-chroot/etc/resolv.conf
 
 echo "creating repositories folder"
-mkdir -p /root/new-engincs-os-chroot/etc/apk 
-printf 'http://dl-cdn.alpinelinux.org/alpine/edge/main/\nhttp://dl-cdn.alpinelinux.org/alpine/edge/community/\nhttp://dl-cdn.alpinelinux.org/alpine/edge/testing/' > /root/new-engincs-os-chroot/etc/apk/repositories
+mkdir -p $ENGINCS_OS/etc/apk 
+printf 'http://dl-cdn.alpinelinux.org/alpine/edge/main/\nhttp://dl-cdn.alpinelinux.org/alpine/edge/community/\nhttp://dl-cdn.alpinelinux.org/alpine/edge/testing/' > $ENGINCS_OS/etc/apk/repositories
 
 echo "Chroot and generate busybox symbolic links"
 #chroot /root/engincs-os-chroot/ busybox.static sh
-chroot /root/new-engincs-os-chroot/ /bin/busybox.static --install -s /bin
+chroot $ENGINCS_OS/ /bin/busybox.static --install -s /bin
 #exit
 echo "Exited chroot"
 
 echo "moving apk required for abuild"
-mv /root/new-engincs-os-chroot/sbin/apk.static /root/new-engincs-os-chroot/sbin/apk
-
-echo "Copy recursively the toolchain to the previous chroot directory"
-# Run recursive copy command 
-# Recursive verbose copy cp -avr source /target/
-cp -avr /root/x-tools/ /root/new-engincs-os-chroot/root/
-
-echo "Copy the abuild files to new chroot"
-mkdir /root/new-engincs-os-chroot/usr/bin
-cd /root/engincs-os-chroot/root/abuild
-cp abuild abuild-fetch abuild-gzsplit abuild-keygen abuild-rmtemp abuild-sign abuild-sudo abuild-tar /root/new-engincs-os-chroot/usr/bin
-cp abump apkbuild-cpan apkbuild-gem-resolver /root/new-engincs-os-chroot/usr/bin
-cp apkbuild-pypi apkgrel newapkbuild bootchartd buildlab checkapk /root/new-engincs-os-chroot/usr/bin
-
-cp abuild.conf /root/new-engincs-os-chroot/etc/
-
-mkdir /root/new-engincs-os-chroot/usr/share/abuild
-cp sample.confd sample.initd functions.sh sample.APKBUILD sample.post-install sample.pre-install config.sub /root/new-engincs-os-chroot/usr/share/abuild
-
-cp /root/engincs-os-chroot/root/abuild/tests/testrepo/pkg1/APKBUILD /root/new-engincs-os-chroot/usr/share/abuild/APKBUILD-SAMPLE
+mv $ENGINCS_OS/sbin/apk.static $ENGINCS_OS/sbin/apk
