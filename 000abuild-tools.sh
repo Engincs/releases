@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 set -e
 # Runme on U(x)buntu 19.10
 
