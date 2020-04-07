@@ -53,7 +53,7 @@ tar zxvf openssl-openssl-1.1.1f.tar.gz
 cd /root/storage/openssl-1.1.1f
 # Configure
 CC='/usr/bin/gcc -static' ./Configure no-shared no-async linux-x86_64
-# Build
+# Build 
 make -j4
 
 # BUILD AND COPY TO COMMON STORAGE
