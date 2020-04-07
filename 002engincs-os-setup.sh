@@ -31,10 +31,31 @@ if [ -z "$TARGET_ARCH" ]; then
  return 1
 fi
 
-echo "umount dev/proc/sys"
-umount $CHROOT/dev
-umount $CHROOT/sys
-umount $CHROOT/proc
+echo "umounting dev/proc/sys"
+
+MOUNT = $CHROOT/dev
+if grep -qs $MOUNT /proc/mounts; then
+  echo "It's mounted."
+  umount $CHROOT/dev
+else
+  echo "It's not mounted."; then
+fi
+
+MOUNT = $CHROOT/sys
+if grep -qs $MOUNT /proc/mounts; then
+  echo "It's mounted."
+  umount $CHROOT/sys
+else
+  echo "It's not mounted."; then
+fi
+
+MOUNT = $CHROOT/proc
+if grep -qs $MOUNT /proc/mounts; then
+  echo "It's mounted."
+  umount $CHROOT/proc
+else
+  echo "It's not mounted."; then
+fi
 
 # Getting read for Glibc port of Alpine - Test script only
 cd /root/
