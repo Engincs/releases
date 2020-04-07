@@ -10,6 +10,14 @@ elif [[ ! -d $CHROOT ]]; then
     return 1
 fi
 
+STORAGE=/root/storage
+if [[ ! -e $STORAGE ]]; then
+    mkdir $STORAGE
+elif [[ ! -d $CHROOT ]]; then
+    echo "$Common storage already exists but is not a directory, returning to prompt" 1>&2
+    return 1
+fi
+
 TARGET_ARCH=$1
 # HINT: Look at cat /etc/apk/arch 
 if [ -z "$TARGET_ARCH" ]; then
