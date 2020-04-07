@@ -23,7 +23,7 @@ if [ -z "$TARGET_ARCH" ]; then
 fi
 
 STORAGE=/root/storage
-STORAGE_APK=/root/storage/apk
+STORAGE_APORTS=aports
 
 CHROOT=/root/abuild-tools
 if [ ! -e $CHROOT ]]; then
@@ -96,9 +96,10 @@ mkdir -p $CHROOT/root/storage
 echo "Binding common storage to engincs os storage"
 mount -o bind $STORAGE $CHROOT/root/storage
 
+cd /root/storage
 echo "Clone aports and fetch the latest updates"
-if [ ! -d $STORAGE_APK]; then
-    mkdir $STORAGE_APK
+if [ ! -d $STORAGE_APORTS]; then
+    echo "does not exist"
 else
     echo "$STORAGE aports already cloned discontinuing" 1>&2
     return 1
@@ -108,9 +109,7 @@ git clone https://gitlab.alpinelinux.org/alpine/aports.git
 cd /root/storage/aports
 git pull 
 
-
 cd /root/storage
-
 # x86_64
 FILE=/root/storage/x86-64-core-i7--glibc--bleeding-edge-2020.02-2.tar.bz2
 if [ -f "$FILE" ]; then
