@@ -1,6 +1,6 @@
 #!/bin/sh
 set -e
-# Runme inside previously built chroot
+# Runme inside previously built chroot /root/abuild-tools/ sh
 
 apk update
 # vi /etc/ssh/sshd_config
