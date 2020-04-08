@@ -116,8 +116,8 @@ if [ -f "$FILE" ]; then
     echo "$FILE exists"
 else 
     echo "$FILE does not exist"
-    wget https://toolchains.bootlin.com/downloads/releases/toolchains/x86-64-core-i7/tarballs/x86-64-core-i7--glibc--bleeding-edge-2020.02-2.tar.bz2
-    tar xf x86-64-core-i7--glibc--bleeding-edge-2020.02-2.tar.bz2
+    #wget https://toolchains.bootlin.com/downloads/releases/toolchains/x86-64-core-i7/tarballs/x86-64-core-i7--glibc--bleeding-edge-2020.02-2.tar.bz2
+    #tar xf x86-64-core-i7--glibc--bleeding-edge-2020.02-2.tar.bz2
 fi
 echo "Removing apk file"
 cd /root
