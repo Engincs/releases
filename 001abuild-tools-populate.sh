@@ -23,6 +23,8 @@ apk add linux-headers attr-dev acl-static # required for tar
 
 # vi /etc/passwd change from root:x:0:0:root:/root:/bin/ash to root:x:0:0:root:/root:/bin/bash
 
+echo "===============COMPILE ON HOST==========================="
+
 # Static compile abuild
 # Note: If we pass -no-pie to GCC on Alpine, its binary will not be PIE-enabled just like Ubuntu binary isn't PIE-enabled, 
 # but then it will be statically linked as we want
