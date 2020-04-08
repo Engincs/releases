@@ -83,6 +83,9 @@ cp /root/abuild-tools/etc/ssl/cert.pem /root/engincs-os/etc/ssl/cert.pem
 # ./configure --enable-local
 # echo "only make command and make install not required"
 # Incase of failure with glibc 2.31 apply patch https://bugs.gentoo.org/708346
+# https://708346.bugs.gentoo.org/attachment.cgi?id=611776
+# libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.cc
+# libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.h
 # make
 # ./ct-ng help
 # ./ct-ng version
