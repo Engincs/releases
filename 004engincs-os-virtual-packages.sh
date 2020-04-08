@@ -71,11 +71,12 @@ apk add -t glibc
 # apk add -t glibc-dev
 # apk add -t glibc-utils
 
-echo "Touch (append) world db for include library files! Remember to remove any blank spaces before appending at the last"
+echo "Touch (append) world db for include library files! Remember to remove any blank spaces before appending at the last\n"
 cp /lib/apk/db/installed /lib/apk/db/installed-backup
 # printf 'p:so:libc.so.6=6\nF:lib/x86_64-linux-gnu\nR:libc.so.6' >> /lib/apk/db/installed
 printf 'p:so:libc.so.6=6 so:libcrypt.so.1=1 so:libdl.so.2=2 so:libm.so.6=6 so:libpthread.so.0=0 so:libutil.so.1=1 so:librt.so.1=1\nF:lib/x86_64-linux-gnu\nR:libc.so.6\nR:libcrypt.so.1\nR:libdl.so.2\nR:libm.so.6\nR:libpthread.so.0\nR:libutil.so.1\nR:librt.so.1' >> /lib/apk/db/installed
 
+echo "============================================================\n"
 echo "Please make sure to run abuild-keygen with a and i options\n"
 # abuild-keygen -a -i 
 # which created keys and wrote in the host /etc/abuild.conf file automatically
@@ -83,3 +84,4 @@ echo "============================================================\n"
 echo "Edit /usr/share/abuild/functions.sh to replace musl with gnu\n"
 echo "============================================================\n"
 echo "Create links in /bin folder for gcc"
+echo "============================================================\n"
