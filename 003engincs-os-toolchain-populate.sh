@@ -6,8 +6,8 @@ set -e
 echo "Copy recursively the toolchain to the engincs os directory"
 # Run recursive copy command 
 # Recursive verbose copy cp -avr source /target/
-cp -avr /root/storage/x86-64-core-i7--glibc--bleeding-edge-2020.02-2/x86_64-buildroot-linux-gnu/sysroot/* /root/engincs-os
-cp -avr /root/storage/x86-64-core-i7--glibc--bleeding-edge-2020.02-2/bin/* /root/engincs-os/bin
+# cp -avr /root/storage/x86-64-core-i7--glibc--bleeding-edge-2020.02-2/x86_64-buildroot-linux-gnu/sysroot/* /root/engincs-os
+# cp -avr /root/storage/x86-64-core-i7--glibc--bleeding-edge-2020.02-2/bin/* /root/engincs-os/bin
 
 echo "Copy the abuild and tools files to engincs os chroot"
 cd /root/storage/abuild
@@ -82,6 +82,7 @@ cp /root/abuild-tools/etc/ssl/cert.pem /root/engincs-os/etc/ssl/cert.pem
 # echo "only build it and run from the source directory optional"
 # ./configure --enable-local
 # echo "only make command and make install not required"
+# Incase of failure with glibc 2.31 apply patch https://bugs.gentoo.org/708346
 # make
 # ./ct-ng help
 # ./ct-ng version
