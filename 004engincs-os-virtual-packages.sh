@@ -76,6 +76,10 @@ cp /lib/apk/db/installed /lib/apk/db/installed-backup
 # printf 'p:so:libc.so.6=6\nF:lib/x86_64-linux-gnu\nR:libc.so.6' >> /lib/apk/db/installed
 printf 'p:so:libc.so.6=6 so:libcrypt.so.1=1 so:libdl.so.2=2 so:libm.so.6=6 so:libpthread.so.0=0 so:libutil.so.1=1 so:librt.so.1=1\nF:lib/x86_64-linux-gnu\nR:libc.so.6\nR:libcrypt.so.1\nR:libdl.so.2\nR:libm.so.6\nR:libpthread.so.0\nR:libutil.so.1\nR:librt.so.1' >> /lib/apk/db/installed
 
+# required for perl
+apk add -t gcc 
+printf 'p:so:libssp.so.0=0.0.0\nF:lib\nR:libssp.so.0.0.0' >> /lib/apk/db/installed
+
 echo "============================================================\n"
 echo "Please make sure to run abuild-keygen with a and i options\n"
 # abuild-keygen -a -i 
