@@ -48,6 +48,10 @@ mkdir /root/engincs-os/etc/ssl
 cp -avr /root/abuild-tools/etc/ssl/certs /root/engincs-os/etc/ssl
 cp /root/abuild-tools/etc/ssl/cert.pem /root/engincs-os/etc/ssl/cert.pem
 
+# cp -avr /root/x-tools/ engincs-os/root/
+# cp -avr /root/x-tools/x86_64-linux-gnu/x86_64-linux-gnu/sysroot/* /root/engincs-os/
+
+
 # Crosstool-ng is not feasible due inaccurate ldd pointers
 # GCC and GNU ld are configured against a common sysroot --sysroot=path. 
 # This means that where ld scripts refer to their subordinate libraries using an absolute path, the path is still relative to sysroot.
