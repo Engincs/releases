@@ -19,6 +19,7 @@ apk add musl-dev
 apk add zlib-static
 apk add openssl-libs-static
 apk add perl
+apk add linux-headers
 
 # vi /etc/passwd change from root:x:0:0:root:/root:/bin/ash to root:x:0:0:root:/root:/bin/bash
 
