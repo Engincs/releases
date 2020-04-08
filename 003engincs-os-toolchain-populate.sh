@@ -9,6 +9,8 @@ echo "Copy recursively the toolchain to the engincs os directory"
 # cp -avr /root/storage/x86-64-core-i7--glibc--bleeding-edge-2020.02-2/x86_64-buildroot-linux-gnu/sysroot/* /root/engincs-os
 # cp -avr /root/storage/x86-64-core-i7--glibc--bleeding-edge-2020.02-2/bin/* /root/engincs-os/bin
 
+mkdir /root/engincs-os/usr/bin
+
 echo "Copy the abuild and tools files to engincs os chroot"
 cd /root/storage/abuild
 cp abuild abuild-fetch abuild-gzsplit abuild-keygen abuild-rmtemp abuild-sign abuild-sudo abuild-tar /root/engincs-os/usr/bin
