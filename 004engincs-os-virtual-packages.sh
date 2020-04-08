@@ -1,3 +1,8 @@
+#!/bin/sh
+set -e
+
+# Runme on inside chroot
+
 echo "Setting up $PATH and links inside chroot"
 touch /etc/ld.so.conf
 ldconfig
