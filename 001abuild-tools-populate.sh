@@ -93,18 +93,20 @@ cd busybox
 make defconfig
 make menuconfig
 
-echo "====================================================="
+echo "===============COMPILE INSIDE CHROOT==========================="
 echo "Compiling static version of patch"
 wget https://ftp.gnu.org/gnu/patch/patch-2.7.6.tar.gz
 tar xvzf patch-2.7.6.tar.gz
+./configure
+./make -j12
 
-#echo "Compiling static version of attr to common storage"
-#cd /root/storage
-#wget http://download.savannah.gnu.org/releases/attr/attr-2.4.48.tar.gz
-#tar xvzf attr-2.4.48.tar.gz
-#cd /root/storage/attr-2.4.48
-#./configure --prefix=/usr --enable-static --disable-shared
-#make LDFLAGS=-static
+echo "===============COMPILE INSIDE CHROOT==========================="
+echo "Compiling static version of attr to common storage"
+wget http://download.savannah.gnu.org/releases/attr/attr-2.4.48.tar.gz
+tar xvzf attr-2.4.48.tar.gz
+cd attr-2.4.48
+./configure --prefix=/usr --enable-static --disable-shared
+make LDFLAGS=-static
 
 # BUILD AND COPY TO COMMON STORAGE
 # 0. Abuild
