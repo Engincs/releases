@@ -80,6 +80,37 @@ printf 'p:so:libc.so.6=6 so:libcrypt.so.1=1 so:libdl.so.2=2 so:libm.so.6=6 so:li
 apk add -t gcc 
 printf 'p:so:libssp.so.0=0.0.0\nF:lib\nR:libssp.so.0.0.0' >> /lib/apk/db/installed
 
+
+
+#apk add -t libgcc
+#P:libgcc
+#p:so:libgcc_s.so.1=1
+#F:usr
+#F:usr/lib
+#R:libgcc_s.so.1
+
+#apk add -t libstdc++
+#P:libstdc++
+#p:so:libstdc++.so.6=6.0.27
+#r:libstdc++ binutils
+#F:usr
+#F:usr/lib
+#R:libstdc++.so.6.0.27
+
+#P:glibc
+#p:so:libc.so.6=6 so:libcrypt.so.1=1 so:libdl.so.2=2 so:libm.so.6=6 so:libpthread.so.0=0 so:libutil.so.1=1 so:librt.so.1=1 so:ld-2=2.31
+#F:lib
+#R:ld-2.31.so
+#F:lib/x86_64-linux-gnu
+#R:libc.so.6
+#R:libcrypt.so.1
+#R:libdl.so.2
+#R:libm.so.6
+#R:libpthread.so.0
+#R:libutil.so.1
+#R:librt.so.1 
+
+
 echo "============================================================\n"
 echo "Please make sure to run abuild-keygen with a and i options\n"
 # abuild-keygen -a -i 
